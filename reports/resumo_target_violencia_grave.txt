@@ -1,0 +1,21 @@
+Resumo do target - violencia grave municipal
+Target: alto_risco_violencia_grave = 1 quando o total mensal fica acima da media historica do proprio municipio ate o mes anterior.
+Cuidado com vazamento: a media historica foi calculada apenas com meses anteriores.
+
+Linhas totais: 157212
+Linhas para modelagem: 156021
+Linhas sem target por falta de historico anterior: 1191
+
+Distribuicao do target:
+alto_risco_violencia_grave
+0    130163
+1     25858
+
+Distribuicao do target por UF:
+alto_risco_violencia_grave      0     1
+uf                                     
+PR                          43421  8848
+RS                          55436  9671
+SC                          31306  7339
+
+Observacao: a base ainda usa volume absoluto de vitimas, sem ajuste populacional.
