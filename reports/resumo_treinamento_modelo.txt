@@ -1,0 +1,25 @@
+Validacao temporal progressiva - violencia grave
+
+Estrategia: dados originais, sem balanceamento.
+Validacoes anuais: 2020, 2021, 2022 e 2023.
+Em cada rodada, o treino termina no ano anterior.
+Teste bloqueado: consultas de 2024-07 a 2025-06
+
+Ranking pela media da average precision:
+1. gradient_boosting: AP media=0.330918, recall medio=0.876074, precisao media=0.253055, F2 medio=0.58538, tempo total=14.517s
+2. floresta_aleatoria: AP media=0.323311, recall medio=0.875437, precisao media=0.249647, F2 medio=0.582151, tempo total=33.499s
+3. regressao_logistica: AP media=0.306597, recall medio=0.900947, precisao media=0.233151, F2 medio=0.571941, tempo total=4.019s
+4. extra_trees: AP media=0.303418, recall medio=0.884195, precisao media=0.24278, F2 medio=0.577982, tempo total=52.056s
+
+Baseline:
+{'roc_auc_media': 0.5, 'roc_auc_desvio': 0.0, 'average_precision_media': 0.194864, 'average_precision_desvio': 0.007307, 'balanced_accuracy_media': 0.5, 'balanced_accuracy_desvio': 0.0, 'precision_media': 0.0, 'precision_desvio': 0.0, 'recall_media': 0.0, 'recall_desvio': 0.0, 'f1_media': 0.0, 'f1_desvio': 0.0, 'f2_media': 0.0, 'f2_desvio': 0.0, 'tempo_total_segundos': 1.949, 'positivos_validacao': 11140}
+
+Average precision por ano:
+- gradient_boosting: 2020=0.332821, 2021=0.354294, 2022=0.322705, 2023=0.313853
+- floresta_aleatoria: 2020=0.327776, 2021=0.340065, 2022=0.313553, 2023=0.31185
+- regressao_logistica: 2020=0.314573, 2021=0.31139, 2022=0.303327, 2023=0.297099
+- extra_trees: 2020=0.319805, 2021=0.307959, 2022=0.283847, 2023=0.302062
+- baseline: 2020=0.206759, 2021=0.192275, 2022=0.193535, 2023=0.186888
+
+Interpretacao: o resultado e um alerta para consulta preliminar e nao uma recomendacao de investimento.
+Atencao: o alerta futuro e desbalanceado; por isso average precision, recall, F2 e a matriz de confusao devem acompanhar a acuracia.

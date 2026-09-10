@@ -1,0 +1,17 @@
+Otimizacao da regressao logistica
+
+Treinamento com undersampling 1:5.
+Validacoes temporais: 2020, 2021, 2022 e 2023.
+Teste bloqueado: 2024-01 a 2025-12.
+
+Ranking por average precision media:
+1. penalidade_l1__C_100: AP=0.025847, precisao=0.040687, recall=0.264773, F2=0.114335, tempo=2.494s
+2. penalidade_l2__C_10: AP=0.025846, precisao=0.04065, recall=0.260966, F2=0.114264, tempo=0.571s
+3. penalidade_l2__C_100: AP=0.025846, precisao=0.040665, recall=0.264773, F2=0.114313, tempo=0.57s
+4. penalidade_l1__C_10: AP=0.025781, precisao=0.040775, recall=0.260966, F2=0.114451, tempo=25.702s
+5. penalidade_l2__C_1: AP=0.025641, precisao=0.037578, recall=0.268147, F2=0.113013, tempo=0.553s
+6. penalidade_l1__C_1: AP=0.02556, precisao=0.037475, recall=0.272164, F2=0.113304, tempo=17.685s
+7. penalidade_l2__C_0.1: AP=0.024871, precisao=0.035962, recall=0.271261, F2=0.111761, tempo=0.513s
+8. penalidade_l1__C_0.1: AP=0.02443, precisao=0.033808, recall=0.27712, F2=0.108423, tempo=2.051s
+9. penalidade_l2__C_0.01: AP=0.023789, precisao=0.029222, recall=0.279421, F2=0.099785, tempo=0.456s
+10. penalidade_l1__C_0.01: AP=0.018707, precisao=0.025799, recall=0.238535, F2=0.088216, tempo=0.665s

@@ -3,4 +3,5 @@ numpy
 openpyxl
 matplotlib
 scikit-learn
+joblib
 jupyter

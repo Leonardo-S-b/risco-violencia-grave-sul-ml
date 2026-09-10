@@ -1,0 +1,131 @@
+{
+  "configuracao_final": {
+    "algoritmo": "regressao_logistica",
+    "penalidade": "l2",
+    "C": 10.0,
+    "balanceamento": "undersampling_1_5",
+    "limiar": 0.177654
+  },
+  "periodo_desenvolvimento": "2016-01 a 2023-12",
+  "periodo_teste": "2024-01 a 2025-12",
+  "linhas_desenvolvimento_originais": 114336,
+  "linhas_treino_apos_undersampling": 10674,
+  "metricas_gerais": {
+    "limiar": 0.1777,
+    "acuracia": 0.961447,
+    "roc_auc": 0.712103,
+    "average_precision": 0.01065,
+    "balanced_accuracy": 0.53498,
+    "precision": 0.014056,
+    "recall": 0.104478,
+    "f1": 0.024779,
+    "f2": 0.045692,
+    "matriz_confusao": {
+      "tn": 27468,
+      "fp": 982,
+      "fn": 120,
+      "tp": 14
+    },
+    "quantidade": 28584,
+    "positivos": 134
+  },
+  "metricas_por_ano": {
+    "2024": {
+      "limiar": 0.1777,
+      "acuracia": 0.949832,
+      "roc_auc": 0.712952,
+      "average_precision": 0.013774,
+      "balanced_accuracy": 0.547136,
+      "precision": 0.018321,
+      "recall": 0.139535,
+      "f1": 0.032389,
+      "f2": 0.06006,
+      "matriz_confusao": {
+        "tn": 13563,
+        "fp": 643,
+        "fn": 74,
+        "tp": 12
+      },
+      "quantidade": 14292,
+      "positivos": 86
+    },
+    "2025": {
+      "limiar": 0.1777,
+      "acuracia": 0.973062,
+      "roc_auc": 0.689141,
+      "average_precision": 0.00705,
+      "balanced_accuracy": 0.508934,
+      "precision": 0.005865,
+      "recall": 0.041667,
+      "f1": 0.010283,
+      "f2": 0.018762,
+      "matriz_confusao": {
+        "tn": 13905,
+        "fp": 339,
+        "fn": 46,
+        "tp": 2
+      },
+      "quantidade": 14292,
+      "positivos": 48
+    }
+  },
+  "metricas_por_uf": {
+    "PR": {
+      "limiar": 0.1777,
+      "acuracia": 0.930556,
+      "roc_auc": 0.682726,
+      "average_precision": 0.010759,
+      "balanced_accuracy": 0.5523,
+      "precision": 0.014286,
+      "recall": 0.169811,
+      "f1": 0.026354,
+      "f2": 0.053444,
+      "matriz_confusao": {
+        "tn": 8902,
+        "fp": 621,
+        "fn": 44,
+        "tp": 9
+      },
+      "quantidade": 9576,
+      "positivos": 53
+    },
+    "RS": {
+      "limiar": 0.1777,
+      "acuracia": 0.979544,
+      "roc_auc": 0.752156,
+      "average_precision": 0.010946,
+      "balanced_accuracy": 0.513765,
+      "precision": 0.009852,
+      "recall": 0.044444,
+      "f1": 0.016129,
+      "f2": 0.02611,
+      "matriz_confusao": {
+        "tn": 11682,
+        "fp": 201,
+        "fn": 43,
+        "tp": 2
+      },
+      "quantidade": 11928,
+      "positivos": 45
+    },
+    "SC": {
+      "limiar": 0.1777,
+      "acuracia": 0.97274,
+      "roc_auc": 0.67799,
+      "average_precision": 0.016495,
+      "balanced_accuracy": 0.530309,
+      "precision": 0.018405,
+      "recall": 0.083333,
+      "f1": 0.030151,
+      "f2": 0.04886,
+      "matriz_confusao": {
+        "tn": 6884,
+        "fp": 160,
+        "fn": 33,
+        "tp": 3
+      },
+      "quantidade": 7080,
+      "positivos": 36
+    }
+  }
+}

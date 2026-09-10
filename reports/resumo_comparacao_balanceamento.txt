@@ -1,0 +1,19 @@
+Comparacao de estrategias de balanceamento
+
+Validacoes: 2020, 2021, 2022 e 2023.
+Teste bloqueado: consultas de 2024-07 a 2025-06.
+Nenhuma reamostragem foi aplicada nas validacoes.
+
+Ranking por average precision media:
+1. gradient_boosting__original: AP=0.330918, precisao=0.253055, recall=0.876074, F2=0.58538, tempo=11.506s
+2. gradient_boosting__peso_classes: AP=0.328268, precisao=0.250612, recall=0.87566, F2=0.582414, tempo=22.371s
+3. gradient_boosting__undersampling_1_3: AP=0.328154, precisao=0.243185, recall=0.900854, F2=0.583096, tempo=12.267s
+4. gradient_boosting__undersampling_1_2: AP=0.324624, precisao=0.252049, recall=0.880084, F2=0.585369, tempo=9.396s
+5. floresta_aleatoria__original: AP=0.323311, precisao=0.249647, recall=0.875437, F2=0.582151, tempo=33.035s
+6. floresta_aleatoria__undersampling_1_3: AP=0.320354, precisao=0.247031, recall=0.884522, F2=0.582785, tempo=25.055s
+7. floresta_aleatoria__undersampling_1_2: AP=0.317061, precisao=0.249944, recall=0.877318, F2=0.582879, tempo=21.13s
+8. regressao_logistica__peso_classes: AP=0.307856, precisao=0.235834, recall=0.894668, F2=0.573368, tempo=3.963s
+9. regressao_logistica__undersampling_1_3: AP=0.307054, precisao=0.232066, recall=0.906659, F2=0.572409, tempo=3.116s
+10. regressao_logistica__original: AP=0.306597, precisao=0.233151, recall=0.900947, F2=0.571941, tempo=4.899s
+11. regressao_logistica__undersampling_1_2: AP=0.306573, precisao=0.230179, recall=0.915198, F2=0.572646, tempo=2.036s
+12. floresta_aleatoria__peso_classes: AP=0.302028, precisao=0.250569, recall=0.87525, F2=0.58164, tempo=33.87s

@@ -1,0 +1,36 @@
+Resumo do target - violencia grave municipal
+Target: alto_risco_violencia_grave = 1 quando o total mensal supera o maior total dos 12 meses anteriores do proprio municipio.
+Cuidado com vazamento: a janela movel usa apenas meses anteriores.
+
+Linhas totais: 157212
+Linhas para modelagem: 142920
+Linhas sem target por falta de historico anterior: 14292
+
+Distribuicao do target:
+alto_risco_violencia_grave
+0    137525
+1      5395
+Percentual positivo: 3.7748%
+
+Distribuicao do target por UF:
+alto_risco_violencia_grave      0     1
+uf
+PR                          46023  1857
+RS                          57485  2155
+SC                          34017  1383
+
+Distribuicao do target por ano:
+alto_risco_violencia_grave      0    1
+ano
+2016                        13921  371
+2017                        13564  728
+2018                        13787  505
+2019                        13789  503
+2020                        13653  639
+2021                        13714  578
+2022                        13764  528
+2023                        13724  568
+2024                        13757  535
+2025                        13852  440
+
+Observacao: a base ainda usa volume absoluto de vitimas, sem ajuste populacional.

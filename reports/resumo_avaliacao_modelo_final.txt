@@ -1,0 +1,32 @@
+Avaliacao final - consulta preliminar de violencia grave
+
+Modelo: HistGradientBoosting conservador_15, sem balanceamento.
+Parametros: {'learning_rate': 0.05, 'max_iter': 250, 'max_leaf_nodes': 15, 'min_samples_leaf': 50, 'l2_regularization': 1.0}.
+Limiar fixado na validacao: 0.108100.
+Teste final: consultas de 2024-07 a 2025-06.
+O treino usa apenas targets encerrados antes do inicio do teste.
+
+Metricas gerais:
+- limiar: 0.1081
+- acuracia: 0.442695
+- roc_auc: 0.690932
+- average_precision: 0.274118
+- balanced_accuracy: 0.618005
+- precision: 0.208878
+- recall: 0.877163
+- f1: 0.33741
+- f2: 0.534895
+- matriz_confusao: {'tn': 4299, 'fp': 7681, 'fn': 284, 'tp': 2028}
+- quantidade: 14292
+- positivos: 2312
+
+Metricas por periodo:
+- 2024-07 a 2024-12: {'limiar': 0.1081, 'acuracia': 0.440106, 'roc_auc': 0.679175, 'average_precision': 0.292179, 'balanced_accuracy': 0.609306, 'precision': 0.229426, 'recall': 0.875862, 'f1': 0.363607, 'f2': 0.560184, 'matriz_confusao': {'tn': 2002, 'fp': 3839, 'fn': 162, 'tp': 1143}, 'quantidade': 7146, 'positivos': 1305}
+- 2025-01 a 2025-06: {'limiar': 0.1081, 'acuracia': 0.445284, 'roc_auc': 0.698597, 'average_precision': 0.249545, 'balanced_accuracy': 0.626507, 'precision': 0.187222, 'recall': 0.878848, 'f1': 0.308685, 'f2': 0.505425, 'matriz_confusao': {'tn': 2297, 'fp': 3842, 'fn': 122, 'tp': 885}, 'quantidade': 7146, 'positivos': 1007}
+
+Metricas por UF:
+- PR: {'limiar': 0.1081, 'acuracia': 0.421053, 'roc_auc': 0.71672, 'average_precision': 0.261588, 'balanced_accuracy': 0.621467, 'precision': 0.185731, 'recall': 0.902047, 'f1': 0.308038, 'f2': 0.509244, 'matriz_confusao': {'tn': 1399, 'fp': 2705, 'fn': 67, 'tp': 617}, 'quantidade': 4788, 'positivos': 684}
+- RS: {'limiar': 0.1081, 'acuracia': 0.450034, 'roc_auc': 0.684439, 'average_precision': 0.270277, 'balanced_accuracy': 0.618479, 'precision': 0.212591, 'recall': 0.869254, 'f1': 0.34163, 'f2': 0.537315, 'matriz_confusao': {'tn': 1833, 'fp': 3152, 'fn': 128, 'tp': 851}, 'quantidade': 5964, 'positivos': 979}
+- SC: {'limiar': 0.1081, 'acuracia': 0.459605, 'roc_auc': 0.685321, 'average_precision': 0.310138, 'balanced_accuracy': 0.615971, 'precision': 0.234899, 'recall': 0.862866, 'f1': 0.369271, 'f2': 0.562249, 'matriz_confusao': {'tn': 1067, 'fp': 1824, 'fn': 89, 'tp': 560}, 'quantidade': 3540, 'positivos': 649}
+
+Uso: alerta de consulta preliminar; nao constitui recomendacao de investimento.
