@@ -1,0 +1,14 @@
+Treinamento inicial - target proporcional por 100 mil
+
+Classificacao binaria sem balanceamento artificial.
+Validacoes temporais: 2020 a 2023.
+Teste final nao utilizado.
+Ranking: menor FP com recall minimo de 70%.
+
+1. floresta_aleatoria: AP=0.391561, precisao=0.262264, recall=0.700074, F2=0.524844, FP=15896, FN=2421, limiar=0.1329, tempo=55.779s
+2. gradient_boosting: AP=0.379064, precisao=0.261471, recall=0.702428, F2=0.525263, FP=16015, FN=2402, limiar=0.1192, tempo=15.529s
+3. extra_trees: AP=0.386745, precisao=0.255724, recall=0.700074, F2=0.519527, FP=16447, FN=2421, limiar=0.127, tempo=49.849s
+4. regressao_logistica: AP=0.334321, precisao=0.231437, recall=0.700074, F2=0.498281, FP=18766, FN=2421, limiar=0.0955, tempo=4.437s
+5. baseline: AP=0.14153, precisao=0.141198, recall=1.0, F2=0.451172, FP=49096, FN=0, limiar=0.1378, tempo=1.994s
+
+Melhor modelo: floresta_aleatoria.

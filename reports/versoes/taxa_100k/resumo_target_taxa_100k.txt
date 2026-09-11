@@ -1,0 +1,37 @@
+Resumo do target proporcional por 100 mil habitantes
+
+Target 1 quando, nos proximos seis meses, a taxa acumulada supera 25 por 100 mil habitantes e existem ocorrencias em pelo menos 2 meses diferentes.
+A populacao usada e a ultima estimativa do IBGE disponivel antes do ano da consulta.
+Os meses futuros sao usados somente para construir a resposta; nunca entram nas variaveis do modelo.
+
+Linhas totais: 157212
+Linhas elegiveis: 136965
+Linhas sem target: 20247
+Percentual positivo: 13.5334%
+
+Distribuicao:
+alerta_taxa_violencia_grave_proximos_6m
+0    118429
+1     18536
+
+Por UF:
+alerta_taxa_violencia_grave_proximos_6m      0     1
+uf                                                  
+PR                                       41440  4445
+RS                                       47968  9187
+SC                                       29021  4904
+
+Por ano:
+alerta_taxa_violencia_grave_proximos_6m      0     1
+ano                                                 
+2015                                      1051   140
+2016                                     12309  1983
+2017                                     12023  2269
+2018                                     12498  1794
+2019                                     12276  2016
+2020                                     12269  2023
+2021                                     12263  2029
+2022                                     12264  2028
+2023                                     12300  1992
+2024                                     12655  1637
+2025                                      6521   625

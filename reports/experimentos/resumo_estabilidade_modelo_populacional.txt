@@ -1,0 +1,15 @@
+Estabilidade temporal da versao 2 populacional
+
+Classificacao binaria e target inalterado.
+Configuracao: {'nome': 'folhas_100', 'learning_rate': 0.08, 'max_iter': 150, 'max_leaf_nodes': 31, 'min_samples_leaf': 100, 'l2_regularization': 0.1}.
+Teste final nao utilizado.
+O limiar e calculado uma vez nas validacoes agrupadas e aplicado igualmente a todos os anos.
+
+Limiar unico: 0.182510
+Resultado agrupado: AP=0.384574, precisao=0.313681, recall=0.70018, F2=0.561749, FP=17066, FN=3340
+
+Resultado por ano com o mesmo limiar:
+- 2020: AP=0.391191, precisao=0.349336, recall=0.623012, F2=0.538619, FP=3429, FN=1114
+- 2021: AP=0.421517, precisao=0.308849, recall=0.769651, F2=0.592769, FP=4733, FN=633
+- 2022: AP=0.367485, precisao=0.303304, recall=0.740058, F2=0.57458, FP=4702, FN=719
+- 2023: AP=0.365645, precisao=0.29955, recall=0.672782, F2=0.538572, FP=4202, FN=874

@@ -1,0 +1,20 @@
+Otimizacao do modelo para o target proporcional
+
+Teste final nao utilizado.
+Mesmo limiar aplicado a 2020, 2021, 2022 e 2023.
+Ranking: menor FP com recall minimo agrupado de 70%.
+
+1. rf_folhas_10: AP=0.394136, precisao=0.265318, recall=0.700074, F2=0.527273, FP=15648, FN=2421, limiar=0.1313, tempo=51.546s
+2. rf_folhas_20: AP=0.396248, precisao=0.265359, recall=0.700446, F2=0.527475, FP=15653, FN=2418, limiar=0.1295, tempo=50.069s
+3. hgb_conservador_15: AP=0.387586, precisao=0.264895, recall=0.700074, F2=0.526939, FP=15682, FN=2421, limiar=0.1263, tempo=16.009s
+4. hgb_folhas_100: AP=0.3811, precisao=0.264078, recall=0.700074, F2=0.526291, FP=15748, FN=2421, limiar=0.1233, tempo=12.561s
+5. hgb_folhas_50: AP=0.380073, precisao=0.262479, recall=0.700322, F2=0.525128, FP=15884, FN=2419, limiar=0.1231, tempo=11.34s
+6. rf_base: AP=0.391561, precisao=0.262264, recall=0.700074, F2=0.524844, FP=15896, FN=2421, limiar=0.1329, tempo=51.325s
+7. hgb_base: AP=0.379168, precisao=0.260884, recall=0.700074, F2=0.523735, FP=16010, FN=2421, limiar=0.1228, tempo=14.053s
+
+Melhor modelo: rf_folhas_10.
+Estabilidade anual do vencedor:
+- 2020: precisao=0.27769, recall=0.691547, FP=3639, FN=624
+- 2021: precisao=0.262588, recall=0.717102, FP=4086, FN=574
+- 2022: precisao=0.271399, recall=0.705128, FP=3839, FN=598
+- 2023: precisao=0.25078, recall=0.686245, FP=4084, FN=625

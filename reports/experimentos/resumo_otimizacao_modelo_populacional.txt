@@ -1,0 +1,21 @@
+Otimizacao do classificador populacional - versao 2
+
+Target binario inalterado. Teste final nao utilizado.
+Ranking: menor quantidade de falsos positivos mantendo recall minimo de 70%.
+
+1. folhas_100: AP=0.384574, precisao=0.313681, recall=0.70018, F2=0.561749, limiar=0.1825, FP=17066, FN=3340, tempo=19.504s
+2. base: AP=0.383226, precisao=0.313522, recall=0.700359, F2=0.56174, limiar=0.1816, FP=17083, FN=3338, tempo=17.642s
+3. aprendizado_muito_lento: AP=0.385009, precisao=0.313102, recall=0.70018, F2=0.561377, limiar=0.1831, FP=17112, FN=3340, tempo=45.591s
+4. conservador_15: AP=0.39096, precisao=0.312871, recall=0.7, F2=0.561136, limiar=0.1824, FP=17126, FN=3342, tempo=21.491s
+5. arvores_menores: AP=0.389166, precisao=0.312808, recall=0.7, F2=0.561096, limiar=0.1832, FP=17131, FN=3342, tempo=14.368s
+6. aprendizado_lento: AP=0.381952, precisao=0.311596, recall=0.7, F2=0.560314, limiar=0.18, FP=17228, FN=3342, tempo=23.54s
+7. l2_10: AP=0.385896, precisao=0.311561, recall=0.70009, F2=0.560337, limiar=0.1794, FP=17233, FN=3341, tempo=25.355s
+8. conservador_31: AP=0.383826, precisao=0.311536, recall=0.70009, F2=0.560321, limiar=0.1802, FP=17235, FN=3341, tempo=36.82s
+9. folhas_50: AP=0.384463, precisao=0.310764, recall=0.7, F2=0.559775, limiar=0.1793, FP=17295, FN=3342, tempo=18.607s
+10. sem_l2: AP=0.382128, precisao=0.310623, recall=0.701077, F2=0.560234, limiar=0.1805, FP=17333, FN=3330, tempo=19.149s
+11. aprendizado_rapido: AP=0.378783, precisao=0.310811, recall=0.701975, F2=0.560815, limiar=0.1794, FP=17340, FN=3320, tempo=14.847s
+12. l2_1: AP=0.380128, precisao=0.30986, recall=0.700718, F2=0.559554, limiar=0.1774, FP=17386, FN=3334, tempo=19.26s
+13. arvores_maiores: AP=0.373417, precisao=0.308468, recall=0.70009, F2=0.558324, limiar=0.1714, FP=17484, FN=3341, tempo=24.622s
+
+Melhor configuracao: folhas_100.
+{'nome': 'folhas_100', 'learning_rate': 0.08, 'max_iter': 150, 'max_leaf_nodes': 31, 'min_samples_leaf': 100, 'l2_regularization': 0.1}

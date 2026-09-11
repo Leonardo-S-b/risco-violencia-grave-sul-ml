@@ -1,0 +1,62 @@
+Diagnostico dos falsos positivos - modelo populacional
+
+Previsoes fora do treino: 2020 a 2023.
+Teste final nao utilizado.
+Limiar unico: 0.182510.
+
+Por ano:
+- 2020: n=14292, taxa_real=0.2068, precisao=0.3493, recall=0.6230, FP=3429, taxa_FP=0.3025, falsos_por_acerto=1.863
+- 2021: n=14292, taxa_real=0.1923, precisao=0.3088, recall=0.7697, FP=4733, taxa_FP=0.4100, falsos_por_acerto=2.238
+- 2022: n=14292, taxa_real=0.1935, precisao=0.3033, recall=0.7401, FP=4702, taxa_FP=0.4079, falsos_por_acerto=2.297
+- 2023: n=14292, taxa_real=0.1869, precisao=0.2995, recall=0.6728, FP=4202, taxa_FP=0.3616, falsos_por_acerto=2.338
+
+Por uf:
+- PR: n=19152, taxa_real=0.2048, precisao=0.3152, recall=0.6707, FP=5715, taxa_FP=0.3753, falsos_por_acerto=2.172
+- RS: n=23856, taxa_real=0.1836, precisao=0.2996, recall=0.7032, FP=7201, taxa_FP=0.3697, falsos_por_acerto=2.338
+- SC: n=14160, taxa_real=0.2004, precisao=0.3348, recall=0.7363, FP=4150, taxa_FP=0.3665, falsos_por_acerto=1.987
+
+Por faixa_populacao:
+- 01_ate_10_mil: n=33564, taxa_real=0.1693, precisao=0.2888, recall=0.6521, FP=9124, taxa_FP=0.3272, falsos_por_acerto=2.463
+- 02_10_a_25_mil: n=12960, taxa_real=0.2144, precisao=0.3335, recall=0.7442, FP=4133, taxa_FP=0.4060, falsos_por_acerto=1.999
+- 03_25_a_50_mil: n=5316, taxa_real=0.2368, precisao=0.3298, recall=0.7983, FP=2042, taxa_FP=0.5033, falsos_por_acerto=2.032
+- 04_50_a_100_mil: n=2784, taxa_real=0.2737, precisao=0.3951, recall=0.7218, FP=842, taxa_FP=0.4164, falsos_por_acerto=1.531
+- 05_100_a_500_mil: n=2256, taxa_real=0.2598, precisao=0.3397, recall=0.7338, FP=836, taxa_FP=0.5006, falsos_por_acerto=1.944
+- 06_mais_de_500_mil: n=288, taxa_real=0.2500, precisao=0.3206, recall=0.5833, FP=89, taxa_FP=0.4120, falsos_por_acerto=2.119
+
+Por faixa_maximo_historico:
+- 00: n=16004, taxa_real=0.2834, precisao=0.3194, recall=0.8821, FP=8526, taxa_FP=0.7435, falsos_por_acerto=2.131
+- 01: n=17772, taxa_real=0.1739, precisao=0.3174, recall=0.5645, FP=3752, taxa_FP=0.2556, falsos_por_acerto=2.150
+- 02: n=9757, taxa_real=0.1518, precisao=0.2887, recall=0.5969, FP=2178, taxa_FP=0.2632, falsos_por_acerto=2.464
+- 03: n=4816, taxa_real=0.1377, precisao=0.3196, recall=0.6305, FP=890, taxa_FP=0.2143, falsos_por_acerto=2.129
+- 04_a_05: n=4342, taxa_real=0.1412, precisao=0.2954, recall=0.5840, FP=854, taxa_FP=0.2290, falsos_por_acerto=2.385
+- 06_ou_mais: n=4477, taxa_real=0.1689, precisao=0.3127, recall=0.5212, FP=866, taxa_FP=0.2327, falsos_por_acerto=2.198
+
+Por faixa_ocorrencias_12m:
+- 00: n=16004, taxa_real=0.2834, precisao=0.3194, recall=0.8821, FP=8526, taxa_FP=0.7435, falsos_por_acerto=2.131
+- 01: n=9502, taxa_real=0.1099, precisao=0.2210, recall=0.2577, FP=948, taxa_FP=0.1121, falsos_por_acerto=3.524
+- 02_a_03: n=10675, taxa_real=0.1523, precisao=0.2946, recall=0.5701, FP=2220, taxa_FP=0.2453, falsos_por_acerto=2.395
+- 04_a_06: n=7281, taxa_real=0.1629, precisao=0.3313, recall=0.6282, FP=1504, taxa_FP=0.2468, falsos_por_acerto=2.019
+- 07_a_12: n=6111, taxa_real=0.1753, precisao=0.3045, recall=0.7003, FP=1713, taxa_FP=0.3399, falsos_por_acerto=2.284
+- 13_ou_mais: n=7595, taxa_real=0.2208, precisao=0.3396, recall=0.6607, FP=2155, taxa_FP=0.3641, falsos_por_acerto=1.945
+
+20 municipios com mais falsos positivos:
+- ENEAS MARQUES/PR: FP=48, TP=0, precisao=0.0000, recall=nan
+- RANCHO ALEGRE/PR: FP=48, TP=0, precisao=0.0000, recall=nan
+- DAVID CANABARRO/RS: FP=48, TP=0, precisao=0.0000, recall=nan
+- IMIGRANTE/RS: FP=48, TP=0, precisao=0.0000, recall=nan
+- NOVA ROMA DO SUL/RS: FP=48, TP=0, precisao=0.0000, recall=nan
+- SEVERIANO DE ALMEIDA/RS: FP=48, TP=0, precisao=0.0000, recall=nan
+- TRES ARROIOS/RS: FP=48, TP=0, precisao=0.0000, recall=nan
+- ARABUTA/SC: FP=48, TP=0, precisao=0.0000, recall=nan
+- BRACO DO TROMBUDO/SC: FP=48, TP=0, precisao=0.0000, recall=nan
+- DOUTOR PEDRINHO/SC: FP=48, TP=0, precisao=0.0000, recall=nan
+- MIRIM DOCE/SC: FP=48, TP=0, precisao=0.0000, recall=nan
+- SAO JOAO DO OESTE/SC: FP=48, TP=0, precisao=0.0000, recall=nan
+- BOA VISTA DO INCRA/RS: FP=47, TP=0, precisao=0.0000, recall=nan
+- SAO MARTINHO/SC: FP=46, TP=0, precisao=0.0000, recall=nan
+- ALVORADA DO SUL/PR: FP=45, TP=0, precisao=0.0000, recall=nan
+- SAO JOSE DO HORTENCIO/RS: FP=45, TP=0, precisao=0.0000, recall=nan
+- CRUZEIRO DO SUL/PR: FP=44, TP=4, precisao=0.0833, recall=1.0000
+- CAMBARA/PR: FP=43, TP=4, precisao=0.0851, recall=1.0000
+- GIRUA/RS: FP=43, TP=5, precisao=0.1042, recall=1.0000
+- SCHROEDER/SC: FP=43, TP=5, precisao=0.1042, recall=1.0000

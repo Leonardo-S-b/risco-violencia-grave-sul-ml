@@ -1,0 +1,24 @@
+Comparacao de targets por 100 mil habitantes
+
+Pergunta: a taxa acumulada nos proximos seis meses ultrapassara o corte por 100 mil habitantes, com ou sem evidencia minima?
+Corte definido pelo percentil 80 somente com dados anteriores a 2020.
+Teste final nao utilizado. Target atual preservado.
+
+taxa_pura: corte=24.877921, prevalencia_pre2020=0.2, AP=0.40317, precisao=0.306929, recall=0.700532, F2=0.557536, FP=19914, FN=3770
+  - 2020: prevalencia=0.229429, precisao=0.328437, recall=0.647758, FP=4343, FN=1155
+  - 2021: prevalencia=0.219214, precisao=0.292231, recall=0.729971, FP=5539, FN=846
+  - 2022: prevalencia=0.216975, precisao=0.29876, recall=0.730087, FP=5314, FN=837
+  - 2023: prevalencia=0.215225, precisao=0.312445, recall=0.697009, FP=4718, FN=932
+
+taxa_e_minimo_2_casos: corte=24.877921, prevalencia_pre2020=0.161041, AP=0.392522, precisao=0.271709, recall=0.700072, F2=0.532249, FP=18275, FN=2921
+  - 2020: prevalencia=0.173244, precisao=0.281156, recall=0.640549, FP=4055, FN=890
+  - 2021: prevalencia=0.168066, precisao=0.267963, recall=0.717319, FP=4707, FN=679
+  - 2022: prevalencia=0.173454, precisao=0.268895, recall=0.746269, FP=5030, FN=629
+  - 2023: prevalencia=0.166667, precisao=0.270107, recall=0.696474, FP=4483, FN=723
+
+taxa_e_ocorrencia_em_2_meses: corte=24.877921, prevalencia_pre2020=0.138287, AP=0.386828, precisao=0.266166, recall=0.700136, F2=0.527971, FP=15649, FN=2431
+  - 2020: prevalencia=0.142877, precisao=0.276697, recall=0.682664, FP=3644, FN=648
+  - 2021: prevalencia=0.142317, precisao=0.268882, recall=0.700098, FP=3872, FN=610
+  - 2022: prevalencia=0.142177, precisao=0.262592, recall=0.73376, FP=4187, FN=541
+  - 2023: prevalencia=0.139868, precisao=0.257293, recall=0.683842, FP=3946, FN=632
+

@@ -1,0 +1,37 @@
+Resumo do target - violencia grave municipal
+Target: alerta_violencia_grave_proximos_6m = 1 quando pelo menos um dos proximos 6 meses supera o maximo conhecido na data da consulta, calculado sobre 12 meses.
+A data da linha representa o momento da consulta. As variaveis usam dados ate essa data; os meses futuros sao usados somente no target.
+
+Linhas totais: 157212
+Linhas para modelagem: 136965
+Linhas sem target por falta de historico anterior: 20247
+
+Distribuicao do target:
+alerta_violencia_grave_proximos_6m
+0    111109
+1     25856
+Percentual positivo: 18.8778%
+
+Distribuicao do target por UF:
+alerta_violencia_grave_proximos_6m      0      1
+uf
+PR                                  36775   9110
+RS                                  46916  10239
+SC                                  27418   6507
+
+Distribuicao do target por ano:
+alerta_violencia_grave_proximos_6m      0     1
+ano
+2015                                 1035   156
+2016                                11402  2890
+2017                                11352  2940
+2018                                11964  2328
+2019                                11408  2884
+2020                                11337  2955
+2021                                11544  2748
+2022                                11526  2766
+2023                                11621  2671
+2024                                11781  2511
+2025                                 6139  1007
+
+Observacao: a base ainda usa volume absoluto de vitimas, sem ajuste populacional.

@@ -1,0 +1,17 @@
+Comparacao de perfis anuais por municipio
+
+Cada municipio recebe um perfil fixo no ano, calculado com os 24 meses anteriores.
+O teste final nao foi usado neste experimento.
+
+modelo_original:
+- limiar_otimizado_f2: AP=0.331073, limiar=0.1081, precisao=0.252725, recall=0.865709, F2=0.58293, FP=28516, FN=1496, falsos_por_acerto=2.956864
+- limiar_com_recall_minimo_70: AP=0.331073, limiar=0.201, precisao=0.295915, recall=0.706104, F2=0.552838, FP=18716, FN=3274, falsos_por_acerto=2.379354
+
+modelo_com_perfis_anuais:
+- limiar_otimizado_f2: AP=0.356734, limiar=0.1053, precisao=0.25666, recall=0.87693, F2=0.591186, FP=28293, FN=1371, falsos_por_acerto=2.896202
+- limiar_com_recall_minimo_70: AP=0.356734, limiar=0.18, precisao=0.300898, recall=0.700628, F2=0.553554, FP=18134, FN=3335, falsos_por_acerto=2.323382
+- limiares_por_perfil_f2: AP=0.356734, limiar=especifico_por_perfil, precisao=0.257508, recall=0.880521, F2=0.593392, FP=28283, FN=1331, falsos_por_acerto=2.883372
+  limites: {'perfil_1': 0.098923, 'perfil_2': 0.106627, 'perfil_3': 0.154023, 'perfil_4': 0.101729, 'perfil_5': 0.079964}
+- limiares_por_perfil_recall_minimo_70: AP=0.356734, limiar=especifico_por_perfil, precisao=0.298806, recall=0.723519, F2=0.563368, FP=18914, FN=3080, falsos_por_acerto=2.34665
+  limites: {'perfil_1': 0.135393, 'perfil_2': 0.179302, 'perfil_3': 0.158637, 'perfil_4': 0.21869, 'perfil_5': 0.163987}
+

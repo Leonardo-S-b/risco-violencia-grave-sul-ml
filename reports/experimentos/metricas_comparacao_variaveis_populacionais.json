@@ -1,0 +1,115 @@
+{
+  "etapa": "Variaveis populacionais e taxas suavizadas no classificador.",
+  "fonte_populacao": "IBGE SIDRA, tabela 6579, variavel 9324.",
+  "regra_temporal_populacao": "Ultima estimativa disponivel anterior ao ano da consulta.",
+  "target_alterado": false,
+  "tipo_modelo": "classificacao_binaria",
+  "teste_final_usado": false,
+  "colunas_populacionais": [
+    "log_populacao",
+    "taxa_total_atual_100k",
+    "taxa_total_lag_1m_100k",
+    "taxa_violencia_3m_100k",
+    "taxa_violencia_6m_100k",
+    "taxa_violencia_12m_100k",
+    "taxa_violencia_12m_uf_100k",
+    "taxa_bayes_12m_peso_5000_100k",
+    "taxa_bayes_12m_peso_20000_100k",
+    "taxa_bayes_12m_peso_50000_100k",
+    "razao_taxa_municipio_uf"
+  ],
+  "resultados": {
+    "modelo_original": {
+      "limiar_otimizado_f2": {
+        "limiar": 0.1081,
+        "acuracia": 0.475021,
+        "roc_auc": 0.688364,
+        "average_precision": 0.331073,
+        "balanced_accuracy": 0.623087,
+        "precision": 0.252725,
+        "recall": 0.865709,
+        "f1": 0.391237,
+        "f2": 0.58293,
+        "matriz_confusao": {
+          "tn": 17512,
+          "fp": 28516,
+          "fn": 1496,
+          "tp": 9644
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 38160,
+        "taxa_alertas": 0.667506,
+        "falsos_positivos_por_verdadeiro_positivo": 2.956864
+      },
+      "limiar_com_recall_minimo_70": {
+        "limiar": 0.201,
+        "acuracia": 0.615344,
+        "roc_auc": 0.688364,
+        "average_precision": 0.331073,
+        "balanced_accuracy": 0.649741,
+        "precision": 0.295915,
+        "recall": 0.706104,
+        "f1": 0.417051,
+        "f2": 0.552838,
+        "matriz_confusao": {
+          "tn": 27312,
+          "fp": 18716,
+          "fn": 3274,
+          "tp": 7866
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 26582,
+        "taxa_alertas": 0.46498,
+        "falsos_positivos_por_verdadeiro_positivo": 2.379354
+      }
+    },
+    "modelo_com_populacao": {
+      "limiar_otimizado_f2": {
+        "limiar": 0.1,
+        "acuracia": 0.482928,
+        "roc_auc": 0.723202,
+        "average_precision": 0.39096,
+        "balanced_accuracy": 0.633848,
+        "precision": 0.257963,
+        "recall": 0.881149,
+        "f1": 0.399089,
+        "f2": 0.594103,
+        "matriz_confusao": {
+          "tn": 17792,
+          "fp": 28236,
+          "fn": 1324,
+          "tp": 9816
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 38052,
+        "taxa_alertas": 0.665617,
+        "falsos_positivos_por_verdadeiro_positivo": 2.876528
+      },
+      "limiar_com_recall_minimo_70": {
+        "limiar": 0.1824,
+        "acuracia": 0.641968,
+        "roc_auc": 0.723202,
+        "average_precision": 0.39096,
+        "balanced_accuracy": 0.663961,
+        "precision": 0.312871,
+        "recall": 0.7,
+        "f1": 0.432453,
+        "f2": 0.561136,
+        "matriz_confusao": {
+          "tn": 28902,
+          "fp": 17126,
+          "fn": 3342,
+          "tp": 7798
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 24924,
+        "taxa_alertas": 0.435978,
+        "falsos_positivos_por_verdadeiro_positivo": 2.196204
+      }
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "origem": "Previsoes fora do treino de 2020 a 2023.",
+  "tipo_modelo": "classificacao_binaria",
+  "target_alterado": false,
+  "teste_final_usado": false,
+  "recall_minimo_agrupado": 0.7,
+  "limiar_unico": 0.18251,
+  "limiares_contextuais": {
+    "limiar_maximo_zero": 0.1925591527758674,
+    "limiar_maximo_positivo": 0.1776574528966547,
+    "tp": 7798,
+    "fp": 16954
+  },
+  "comparacao": {
+    "limiar_unico": {
+      "total": {
+        "observacoes": 57168.0,
+        "positivos_reais": 11140.0,
+        "taxa_positivos_reais": 0.194864,
+        "alertas": 24866.0,
+        "taxa_alertas": 0.434964,
+        "tp": 7800.0,
+        "fp": 17066.0,
+        "fn": 3340.0,
+        "tn": 28962.0,
+        "precisao": 0.313681,
+        "recall": 0.70018,
+        "taxa_falso_positivo": 0.370774,
+        "falsos_por_acerto": 2.187949
+      },
+      "por_contexto": {
+        "maximo_positivo": {
+          "observacoes": 41164.0,
+          "positivos_reais": 6604.0,
+          "taxa_positivos_reais": 0.160431,
+          "alertas": 12339.0,
+          "taxa_alertas": 0.299752,
+          "tp": 3799.0,
+          "fp": 8540.0,
+          "fn": 2805.0,
+          "tn": 26020.0,
+          "precisao": 0.307886,
+          "recall": 0.575257,
+          "taxa_falso_positivo": 0.247106,
+          "falsos_por_acerto": 2.24796
+        },
+        "maximo_zero": {
+          "observacoes": 16004.0,
+          "positivos_reais": 4536.0,
+          "taxa_positivos_reais": 0.283429,
+          "alertas": 12527.0,
+          "taxa_alertas": 0.782742,
+          "tp": 4001.0,
+          "fp": 8526.0,
+          "fn": 535.0,
+          "tn": 2942.0,
+          "precisao": 0.31939,
+          "recall": 0.882055,
+          "taxa_falso_positivo": 0.74346,
+          "falsos_por_acerto": 2.130967
+        }
+      },
+      "por_ano": {
+        "2020": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2955.0,
+          "taxa_positivos_reais": 0.206759,
+          "alertas": 5270.0,
+          "taxa_alertas": 0.368738,
+          "tp": 1841.0,
+          "fp": 3429.0,
+          "fn": 1114.0,
+          "tn": 7908.0,
+          "precisao": 0.349336,
+          "recall": 0.623012,
+          "taxa_falso_positivo": 0.302461,
+          "falsos_por_acerto": 1.862575
+        },
+        "2021": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2748.0,
+          "taxa_positivos_reais": 0.192275,
+          "alertas": 6848.0,
+          "taxa_alertas": 0.479149,
+          "tp": 2115.0,
+          "fp": 4733.0,
+          "fn": 633.0,
+          "tn": 6811.0,
+          "precisao": 0.308849,
+          "recall": 0.769651,
+          "taxa_falso_positivo": 0.409997,
+          "falsos_por_acerto": 2.237825
+        },
+        "2022": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2766.0,
+          "taxa_positivos_reais": 0.193535,
+          "alertas": 6749.0,
+          "taxa_alertas": 0.472222,
+          "tp": 2047.0,
+          "fp": 4702.0,
+          "fn": 719.0,
+          "tn": 6824.0,
+          "precisao": 0.303304,
+          "recall": 0.740058,
+          "taxa_falso_positivo": 0.407947,
+          "falsos_por_acerto": 2.29702
+        },
+        "2023": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2671.0,
+          "taxa_positivos_reais": 0.186888,
+          "alertas": 5999.0,
+          "taxa_alertas": 0.419745,
+          "tp": 1797.0,
+          "fp": 4202.0,
+          "fn": 874.0,
+          "tn": 7419.0,
+          "precisao": 0.29955,
+          "recall": 0.672782,
+          "taxa_falso_positivo": 0.361587,
+          "falsos_por_acerto": 2.338342
+        }
+      }
+    },
+    "dois_limiares": {
+      "total": {
+        "observacoes": 57168.0,
+        "positivos_reais": 11140.0,
+        "taxa_positivos_reais": 0.194864,
+        "alertas": 24752.0,
+        "taxa_alertas": 0.432969,
+        "tp": 7798.0,
+        "fp": 16954.0,
+        "fn": 3342.0,
+        "tn": 29074.0,
+        "precisao": 0.315045,
+        "recall": 0.7,
+        "taxa_falso_positivo": 0.368341,
+        "falsos_por_acerto": 2.174147
+      },
+      "por_contexto": {
+        "maximo_positivo": {
+          "observacoes": 41164.0,
+          "positivos_reais": 6604.0,
+          "taxa_positivos_reais": 0.160431,
+          "alertas": 12755.0,
+          "taxa_alertas": 0.309858,
+          "tp": 3882.0,
+          "fp": 8873.0,
+          "fn": 2722.0,
+          "tn": 25687.0,
+          "precisao": 0.304351,
+          "recall": 0.587826,
+          "taxa_falso_positivo": 0.256742,
+          "falsos_por_acerto": 2.285677
+        },
+        "maximo_zero": {
+          "observacoes": 16004.0,
+          "positivos_reais": 4536.0,
+          "taxa_positivos_reais": 0.283429,
+          "alertas": 11997.0,
+          "taxa_alertas": 0.749625,
+          "tp": 3916.0,
+          "fp": 8081.0,
+          "fn": 620.0,
+          "tn": 3387.0,
+          "precisao": 0.326415,
+          "recall": 0.863316,
+          "taxa_falso_positivo": 0.704656,
+          "falsos_por_acerto": 2.063585
+        }
+      },
+      "por_ano": {
+        "2020": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2955.0,
+          "taxa_positivos_reais": 0.206759,
+          "alertas": 5274.0,
+          "taxa_alertas": 0.369018,
+          "tp": 1850.0,
+          "fp": 3424.0,
+          "fn": 1105.0,
+          "tn": 7913.0,
+          "precisao": 0.350777,
+          "recall": 0.626058,
+          "taxa_falso_positivo": 0.30202,
+          "falsos_por_acerto": 1.850811
+        },
+        "2021": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2748.0,
+          "taxa_positivos_reais": 0.192275,
+          "alertas": 6898.0,
+          "taxa_alertas": 0.482648,
+          "tp": 2131.0,
+          "fp": 4767.0,
+          "fn": 617.0,
+          "tn": 6777.0,
+          "precisao": 0.30893,
+          "recall": 0.775473,
+          "taxa_falso_positivo": 0.412942,
+          "falsos_por_acerto": 2.236978
+        },
+        "2022": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2766.0,
+          "taxa_positivos_reais": 0.193535,
+          "alertas": 6671.0,
+          "taxa_alertas": 0.466765,
+          "tp": 2040.0,
+          "fp": 4631.0,
+          "fn": 726.0,
+          "tn": 6895.0,
+          "precisao": 0.305801,
+          "recall": 0.737527,
+          "taxa_falso_positivo": 0.401787,
+          "falsos_por_acerto": 2.270098
+        },
+        "2023": {
+          "observacoes": 14292.0,
+          "positivos_reais": 2671.0,
+          "taxa_positivos_reais": 0.186888,
+          "alertas": 5909.0,
+          "taxa_alertas": 0.413448,
+          "tp": 1777.0,
+          "fp": 4132.0,
+          "fn": 894.0,
+          "tn": 7489.0,
+          "precisao": 0.300728,
+          "recall": 0.665294,
+          "taxa_falso_positivo": 0.355563,
+          "falsos_por_acerto": 2.325267
+        }
+      }
+    }
+  }
+}

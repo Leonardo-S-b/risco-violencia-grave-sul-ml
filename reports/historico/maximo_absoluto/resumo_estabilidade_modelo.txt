@@ -1,0 +1,24 @@
+Estabilidade da regressao logistica selecionada
+
+Configuracao: L2, C=10, undersampling 1:5.
+Validacoes temporais: 2020, 2021, 2022 e 2023.
+Teste bloqueado: 2024-01 a 2025-12.
+
+Semente 11: limiar=0.177654, AP=0.02424, precisao=0.030824, recall=0.297297, F2=0.10894
+Semente 23: limiar=0.198498, AP=0.024388, precisao=0.033737, recall=0.210811, F2=0.102848
+Semente 42: limiar=0.18469, AP=0.025291, precisao=0.032911, recall=0.243243, F2=0.10677
+Semente 71: limiar=0.170704, AP=0.023961, precisao=0.030078, recall=0.299099, F2=0.107249
+Semente 101: limiar=0.160757, AP=0.024109, precisao=0.028031, recall=0.320721, F2=0.103851
+
+Resumo entre as sementes:
+- average_precision_media: 0.024398
+- average_precision_desvio: 0.000468
+- precision_media: 0.031116
+- precision_desvio: 0.002038
+- recall_media: 0.274234
+- recall_desvio: 0.040729
+- f1_media: 0.055643
+- f1_desvio: 0.00243
+- f2_media: 0.105932
+- f2_desvio: 0.002251
+- limiar recomendado (mediana): 0.177654

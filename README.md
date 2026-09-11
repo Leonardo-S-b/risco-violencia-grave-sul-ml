@@ -1,83 +1,173 @@
 # Consulta preliminar de violencia grave no Sul
 
-Projeto academico de machine learning para apoiar uma consulta preliminar sobre
-violencia grave nos municipios do Parana, de Santa Catarina e do Rio Grande do
-Sul. O resultado e um alerta complementar para estudos iniciais de empreendimentos
-urbanos; nao constitui recomendacao ou decisao de investimento.
+Aplicacao academica end-to-end de Machine Learning supervisionado para apoiar a
+consulta preliminar de municipios do Parana, Santa Catarina e Rio Grande do Sul
+por empresas de construcao e planejamento urbano. O sistema produz um alerta
+complementar; ele nao aprova, reprova nem substitui uma decisao de investimento.
 
-## Objetivo de modelagem
+## Proposta do trabalho
 
-Para cada municipio e data de consulta, o alvo vale `1` quando pelo menos um dos
-seis meses seguintes supera o maior total mensal conhecido nos 12 meses ate a
-consulta. O modelo continua sendo de classificacao e usa somente informacoes
-disponiveis na data consultada. Os experimentos mensais anteriores permanecem
-arquivados em `reports/experimento_maximo_absoluto/` e
-`reports/experimento_maximo_movel_12m_mensal/`.
+### Qual dataset foi escolhido e qual problema ele representa?
 
-Os eventos considerados sao homicidio doloso, latrocinio, tentativa de homicidio,
-lesao corporal seguida de morte e feminicidio. A unidade geografica atual e o
-municipio; a base nao permite conclusoes por bairro.
+Foram escolhidas as bases anuais de Vitimas de Dados Estatisticos (VDE), de 2015
+a 2025, combinadas com estimativas municipais de populacao do IBGE/SIDRA. Depois
+da limpeza, a base possui 157.212 registros mensais dos 1.191 municipios da
+Regiao Sul.
 
-## Pipeline
+O problema e identificar municipios que podem apresentar uma taxa persistente
+de violencia grave elevada nos seis meses seguintes. Sao considerados homicidio
+doloso, latrocinio, tentativa de homicidio, lesao corporal seguida de morte e
+feminicidio.
 
-1. `scripts/sanitizar_violencia_grave_sul.py`: filtra e agrega as planilhas anuais.
-2. `scripts/criar_target_violencia_grave.py`: calcula o maximo historico anterior e o target.
-3. `scripts/treinar_modelo_risco.py`: cria variaveis historicas e compara baseline,
-   regressao logistica, arvore, Random Forest, Extra Trees, boosting e KNN.
-4. `scripts/comparar_balanceamento.py`: compara dados originais, peso de classes e
-   undersampling 1:3 e 1:2 nos principais algoritmos.
-5. `scripts/otimizar_regressao_logistica.py`: compara regularizacao L1 e L2 com
-   diferentes intensidades na regressao logistica com undersampling 1:5.
-   Esse script pertence ao experimento anterior e foi mantido para registro.
-6. `scripts/otimizar_gradient_boosting.py`: otimiza o Gradient Boosting escolhido
-   para o alerta classificatorio dos proximos seis meses.
-7. `scripts/validar_estabilidade_modelo.py`: agrega as previsoes fora do treino
-   de 2020 a 2023, determina um limiar unico e verifica a variacao entre anos.
-8. `scripts/analisar_limiares_modelo.py`: mede, somente nas validacoes, quanto a
-   reducao de falsos alertas custa em casos reais nao identificados.
-9. `scripts/comparar_perfis_municipios.py`: cria cinco perfis temporais de
-   municipios e compara o Gradient Boosting com e sem essa contextualizacao.
-10. `scripts/avaliar_modelo_final.py`: treina a configuracao fechada, executa uma
-   avaliacao nas consultas de 2024-07 a 2025-06 e salva as previsoes e o
-   artefato do modelo.
+### Qual e a variavel-alvo?
 
-A comparacao faz validacao temporal progressiva nos anos de 2020 a 2023. Em cada
-rodada, o treinamento usa apenas os anos anteriores. As consultas de 2024-07 a
-2025-06 foram reservadas e acessadas uma unica vez no teste final. O limiar de
-alerta foi definido nas validacoes pelo F2, que da mais peso ao recall, e o
-ranking usou a media da `average precision` entre as quatro rodadas.
+O target e `alerta_taxa_violencia_grave_proximos_6m`. Ele recebe valor `1` quando:
 
-## Resultado final
+1. a soma de ocorrencias dos seis meses seguintes supera 25 por 100 mil
+   habitantes; e
+2. existem ocorrencias em pelo menos dois meses diferentes desse periodo.
 
-O HistGradientBoosting `conservador_15`, sem balanceamento e com limiar de
-0,1081, obteve no teste final AP de 0,2741, precisao de 0,2089, recall de 0,8772
-e F2 de 0,5349. O limiar e os parametros nao foram reajustados depois da abertura
-do teste.
+A segunda condicao impede que um unico caso isolado em uma cidade pequena seja
+interpretado como um problema persistente.
 
-## Execucao
+### Quais sao as classes possiveis?
+
+- `0 - sem alerta`: a regra proporcional e de persistencia nao foi atingida;
+- `1 - com alerta`: a regra foi atingida e o municipio merece analise adicional.
+
+### Quais informacoes entram no modelo?
+
+O modelo usa somente informacoes conhecidas na data da consulta:
+
+- UF e mes do ano;
+- populacao municipal oficial disponivel naquele momento;
+- totais recentes de violencia grave;
+- valores atrasados em 1, 2, 3, 6 e 12 meses;
+- medias e desvios moveis;
+- taxas por 100 mil habitantes;
+- taxas suavizadas para reduzir distorcoes em municipios pequenos;
+- historico separado por tipo de ocorrencia.
+
+Os seis meses futuros sao usados exclusivamente para criar o target durante o
+treinamento e nunca entram como caracteristicas.
+
+### Quem utilizaria e com qual finalidade?
+
+Equipes de expansao, planejamento e estudos preliminares de uma construtora ou
+empreiteira de cidades e bairros planejados. O alerta ajuda a priorizar locais
+que precisam de uma investigacao de seguranca mais detalhada antes das etapas de
+viabilidade, aquisicao de terrenos e planejamento urbano.
+
+### O que a aplicacao fara com a classificacao?
+
+A aplicacao apresentara a classe prevista, a probabilidade estimada e uma
+orientacao operacional:
+
+- sem alerta: continuar a consulta preliminar com os demais indicadores;
+- com alerta: solicitar analise complementar de seguranca e contexto local.
+
+O resultado nao sera apresentado como recomendacao automatica de investir ou
+nao investir.
+
+### Como sera a experiencia de uso?
+
+O usuario selecionara UF, municipio e data de consulta em uma interface web. A
+aplicacao buscara o historico necessario, enviara as variaveis para uma API
+FastAPI e exibira o alerta, a probabilidade e uma explicacao curta sobre o uso
+preliminar do resultado.
+
+## Modelo selecionado
+
+A versao proporcional usa uma `RandomForestClassifier` com 300 arvores,
+profundidade maxima 14, minimo de 10 exemplos por folha e limiar 0,1313. Nas
+validacoes temporais de 2020 a 2023, obteve:
+
+- acuracia: 68,39%;
+- ROC AUC: 0,7608;
+- average precision: 0,3941;
+- precisao: 26,53%;
+- recall: 70,01%;
+- F2: 0,5273.
+
+O teste posterior ja havia sido aberto por uma versao anterior e nao foi
+reutilizado para escolher este modelo. Essa limitacao esta documentada para nao
+apresentar o resultado como uma avaliacao externa inedita.
+
+## Fluxo end-to-end
+
+```text
+VDE + IBGE
+    -> sanitizacao
+    -> target e variaveis historicas
+    -> validacao temporal
+    -> treinamento e otimizacao
+    -> artefato treinado
+    -> API FastAPI
+    -> interface de consulta
+```
+
+O projeto segue como referencia conceitual o repositorio
+[`ml_fastapi_for_churn`](https://github.com/chiarorosa/ml_fastapi_for_churn).
+A modelagem e o empacotamento estao concluidos; a API e a interface constituem
+a proxima etapa de implementacao.
+
+O artefato atual fica em
+`models/versoes/taxa_100k/modelo_risco_taxa_100k.joblib`. Ele inclui o pipeline
+de pre-processamento, a Random Forest, o limiar e os metadados necessarios para
+a futura API.
+
+## Organizacao do repositorio
+
+```text
+scripts/
+|-- dados/                         # coleta, limpeza e populacao do IBGE
+|-- versoes/
+|   |-- maximo_movel_6m/           # versao anterior preservada
+|   `-- taxa_100k/                 # versao proporcional atual
+`-- experimentos/                  # tentativas e diagnosticos nao promovidos
+
+data/processed/
+|-- referencias/                   # populacao do IBGE
+|-- versoes/                       # targets separados por versao
+|-- experimentos/                  # previsoes usadas em diagnosticos
+`-- *.csv                          # bases mensais compartilhadas
+
+reports/
+|-- dados/                         # auditoria da preparacao
+|-- versoes/                       # metricas de cada versao
+|-- experimentos/                  # resultados de tentativas
+`-- historico/                     # trabalhos anteriores arquivados
+```
+
+Consulte [`docs/contexto_do_projeto.md`](docs/contexto_do_projeto.md) para o
+historico das decisoes e
+[`docs/revisao_literatura_falsos_positivos.md`](docs/revisao_literatura_falsos_positivos.md)
+para a revisao utilizada na reducao de falsos alertas.
+
+## Execucao da versao atual
+
+No PowerShell, a partir da raiz do repositorio:
 
 ```powershell
 python -m pip install -r requirements.txt
-python scripts/criar_target_violencia_grave.py
-python scripts/treinar_modelo_risco.py
-python scripts/comparar_balanceamento.py
-python scripts/otimizar_gradient_boosting.py
-python scripts/validar_estabilidade_modelo.py
-python scripts/analisar_limiares_modelo.py
-python scripts/comparar_perfis_municipios.py
-python scripts/avaliar_modelo_final.py
-python -m unittest discover -s tests -v
+python -m scripts.dados.baixar_populacao_ibge
+python -m scripts.versoes.taxa_100k.criar_target_taxa_100k
+python -m scripts.versoes.taxa_100k.treinar_modelo_taxa_100k
+python -m scripts.versoes.taxa_100k.otimizar_modelo_taxa_100k
+python -m scripts.versoes.taxa_100k.empacotar_modelo
+python -m pytest -q
 ```
 
-As metricas finais detalhadas ficam em
-`reports/metricas_avaliacao_modelo_final.json`, e o resumo legivel em
-`reports/resumo_avaliacao_modelo_final.txt`. As previsoes e o artefato treinado
-tambem sao gerados pelo ultimo passo do pipeline.
+Os experimentos antigos nao fazem parte da execucao principal. Eles permanecem
+no repositorio para demonstrar as alternativas avaliadas e justificar a escolha
+da versao atual.
 
 ## Limitacoes
 
-- A ocorrencia de um novo maximo historico e rara e fica ainda mais rara com o
-  aumento do periodo observado.
-- A base usa volume absoluto de vitimas, sem ajuste pela populacao municipal.
-- O alerta deve ser combinado com estudos de seguranca, mercado, infraestrutura
-  e viabilidade antes de qualquer decisao empresarial.
+- A precisao ainda e baixa: muitos alertas nao se confirmam.
+- Ocorrencias raras em municipios pequenos continuam dificeis de prever.
+- A base municipal nao permite conclusoes por bairro.
+- O indicador de seguranca deve ser combinado com mercado, infraestrutura,
+  mobilidade, legislacao e viabilidade financeira.
+- A aplicacao e uma consulta preliminar academica, nao um sistema autonomo de
+  decisao empresarial.

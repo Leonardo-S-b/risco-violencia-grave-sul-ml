@@ -1,0 +1,12 @@
+Analise de limites de alerta nas validacoes 2020-2023
+
+O teste final nao foi usado para escolher estes limites.
+Limites maiores reduzem falsos alertas, mas deixam passar mais casos.
+
+- f2_atual: limiar=0.1081, precisao=0.252719, recall=0.865709, F1=0.391229, F2=0.582923, alertas=38161, FP=28517, FN=1496, falsos_por_acerto=2.956968
+- melhor_f1: limiar=0.206, precisao=0.301149, recall=0.68456, F1=0.418287, F2=0.545626, alertas=25323, FP=17697, FN=3514, falsos_por_acerto=2.320614
+- recall_minimo_85: limiar=0.1146, precisao=0.257337, recall=0.85009, F1=0.395077, F2=0.581981, alertas=36800, FP=27330, FN=1670, falsos_por_acerto=2.885956
+- recall_minimo_80: limiar=0.1447, precisao=0.272522, recall=0.8, F1=0.406551, F2=0.576739, alertas=32702, FP=23790, FN=2228, falsos_por_acerto=2.669434
+- recall_minimo_75: limiar=0.1691, precisao=0.285485, recall=0.75, F1=0.413552, F2=0.565858, alertas=29266, FP=20911, FN=2785, falsos_por_acerto=2.502813
+- recall_minimo_70: limiar=0.201, precisao=0.295915, recall=0.706104, F1=0.417051, F2=0.552838, alertas=26582, FP=18716, FN=3274, falsos_por_acerto=2.379354
+- recall_minimo_60: limiar=0.2242, precisao=0.305347, recall=0.620287, F1=0.409239, F2=0.514213, alertas=22630, FP=15720, FN=4230, falsos_por_acerto=2.274964

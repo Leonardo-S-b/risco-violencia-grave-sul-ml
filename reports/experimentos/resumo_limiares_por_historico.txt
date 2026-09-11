@@ -1,0 +1,27 @@
+Comparacao de limiar unico e limiares por historico
+
+Classificacao binaria e target inalterado.
+Teste final nao utilizado.
+Limiar quando maximo historico = 0: 0.192559
+Limiar quando maximo historico > 0: 0.177657
+
+limiar_unico: precisao=0.313681, recall=0.700180, FP=17066, FN=3340, falsos_por_acerto=2.187949
+  Por contexto:
+  - maximo_positivo: precisao=0.307886, recall=0.575257, FP=8540
+  - maximo_zero: precisao=0.319390, recall=0.882055, FP=8526
+  Por ano:
+  - 2020: precisao=0.349336, recall=0.623012, FP=3429
+  - 2021: precisao=0.308849, recall=0.769651, FP=4733
+  - 2022: precisao=0.303304, recall=0.740058, FP=4702
+  - 2023: precisao=0.299550, recall=0.672782, FP=4202
+
+dois_limiares: precisao=0.315045, recall=0.700000, FP=16954, FN=3342, falsos_por_acerto=2.174147
+  Por contexto:
+  - maximo_positivo: precisao=0.304351, recall=0.587826, FP=8873
+  - maximo_zero: precisao=0.326415, recall=0.863316, FP=8081
+  Por ano:
+  - 2020: precisao=0.350777, recall=0.626058, FP=3424
+  - 2021: precisao=0.308930, recall=0.775473, FP=4767
+  - 2022: precisao=0.305801, recall=0.737527, FP=4631
+  - 2023: precisao=0.300728, recall=0.665294, FP=4132
+

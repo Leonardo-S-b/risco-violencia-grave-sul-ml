@@ -1,0 +1,364 @@
+{
+  "etapa": "Experimento de targets proporcionais por 100 mil habitantes.",
+  "definicao": "Target 1 quando a soma de violencia grave nos proximos seis meses, dividida pela populacao conhecida na consulta, ultrapassa o corte.",
+  "origem_cortes": "Percentil 80 da taxa futura apenas no periodo anterior a 2020.",
+  "tipo_modelo": "classificacao_binaria",
+  "target_atual_sobrescrito": false,
+  "teste_final_usado": false,
+  "resultados": {
+    "taxa_pura": {
+      "corte_taxa_6m_por_100k": 24.877921,
+      "regra_evidencia_minima": "taxa_pura",
+      "prevalencia_referencia_antes_2020": 0.2,
+      "limiar_modelo": 0.192924,
+      "metricas_agrupadas": {
+        "limiar": 0.1929,
+        "acuracia": 0.585712,
+        "roc_auc": 0.690793,
+        "average_precision": 0.40317,
+        "balanced_accuracy": 0.62691,
+        "precision": 0.306929,
+        "recall": 0.700532,
+        "f1": 0.426843,
+        "f2": 0.557536,
+        "matriz_confusao": {
+          "tn": 24665,
+          "fp": 19914,
+          "fn": 3770,
+          "tp": 8819
+        },
+        "quantidade": 57168,
+        "positivos": 12589,
+        "quantidade_alertas": 28733,
+        "taxa_alertas": 0.502606,
+        "falsos_positivos_por_verdadeiro_positivo": 2.258079
+      },
+      "metricas_por_ano": {
+        "2020": {
+          "limiar": 0.1929,
+          "acuracia": 0.615309,
+          "roc_auc": 0.690709,
+          "average_precision": 0.424517,
+          "balanced_accuracy": 0.626703,
+          "precision": 0.328437,
+          "recall": 0.647758,
+          "f1": 0.435871,
+          "f2": 0.542307,
+          "matriz_confusao": {
+            "tn": 6670,
+            "fp": 4343,
+            "fn": 1155,
+            "tp": 2124
+          },
+          "quantidade": 14292,
+          "positivos": 3279,
+          "quantidade_alertas": 6467,
+          "taxa_alertas": 0.452491,
+          "falsos_positivos_por_verdadeiro_positivo": 2.044727
+        },
+        "2021": {
+          "limiar": 0.1929,
+          "acuracia": 0.553247,
+          "roc_auc": 0.676632,
+          "average_precision": 0.372143,
+          "balanced_accuracy": 0.6168,
+          "precision": 0.292231,
+          "recall": 0.729971,
+          "f1": 0.417374,
+          "f2": 0.561696,
+          "matriz_confusao": {
+            "tn": 5620,
+            "fp": 5539,
+            "fn": 846,
+            "tp": 2287
+          },
+          "quantidade": 14292,
+          "positivos": 3133,
+          "quantidade_alertas": 7826,
+          "taxa_alertas": 0.547579,
+          "falsos_positivos_por_verdadeiro_positivo": 2.42195
+        },
+        "2022": {
+          "limiar": 0.1929,
+          "acuracia": 0.569619,
+          "roc_auc": 0.694365,
+          "average_precision": 0.402937,
+          "balanced_accuracy": 0.627621,
+          "precision": 0.29876,
+          "recall": 0.730087,
+          "f1": 0.42401,
+          "f2": 0.56651,
+          "matriz_confusao": {
+            "tn": 5877,
+            "fp": 5314,
+            "fn": 837,
+            "tp": 2264
+          },
+          "quantidade": 14292,
+          "positivos": 3101,
+          "quantidade_alertas": 7578,
+          "taxa_alertas": 0.530227,
+          "falsos_positivos_por_verdadeiro_positivo": 2.347173
+        },
+        "2023": {
+          "limiar": 0.1929,
+          "acuracia": 0.604674,
+          "roc_auc": 0.705968,
+          "average_precision": 0.416021,
+          "balanced_accuracy": 0.63818,
+          "precision": 0.312445,
+          "recall": 0.697009,
+          "f1": 0.431475,
+          "f2": 0.559324,
+          "matriz_confusao": {
+            "tn": 6498,
+            "fp": 4718,
+            "fn": 932,
+            "tp": 2144
+          },
+          "quantidade": 14292,
+          "positivos": 3076,
+          "quantidade_alertas": 6862,
+          "taxa_alertas": 0.480129,
+          "falsos_positivos_por_verdadeiro_positivo": 2.20056
+        }
+      }
+    },
+    "taxa_e_minimo_2_casos": {
+      "corte_taxa_6m_por_100k": 24.877921,
+      "regra_evidencia_minima": "taxa_e_minimo_2_casos",
+      "prevalencia_referencia_antes_2020": 0.161041,
+      "limiar_modelo": 0.142337,
+      "metricas_agrupadas": {
+        "limiar": 0.1423,
+        "acuracia": 0.629233,
+        "roc_auc": 0.723093,
+        "average_precision": 0.392522,
+        "balanced_accuracy": 0.65738,
+        "precision": 0.271709,
+        "recall": 0.700072,
+        "f1": 0.391479,
+        "f2": 0.532249,
+        "matriz_confusao": {
+          "tn": 29154,
+          "fp": 18275,
+          "fn": 2921,
+          "tp": 6818
+        },
+        "quantidade": 57168,
+        "positivos": 9739,
+        "quantidade_alertas": 25093,
+        "taxa_alertas": 0.438934,
+        "falsos_positivos_por_verdadeiro_positivo": 2.680405
+      },
+      "metricas_por_ano": {
+        "2020": {
+          "limiar": 0.1423,
+          "acuracia": 0.654002,
+          "roc_auc": 0.709832,
+          "average_precision": 0.391492,
+          "balanced_accuracy": 0.648685,
+          "precision": 0.281156,
+          "recall": 0.640549,
+          "f1": 0.390785,
+          "f2": 0.510132,
+          "matriz_confusao": {
+            "tn": 7761,
+            "fp": 4055,
+            "fn": 890,
+            "tp": 1586
+          },
+          "quantidade": 14292,
+          "positivos": 2476,
+          "quantidade_alertas": 5641,
+          "taxa_alertas": 0.394696,
+          "falsos_positivos_por_verdadeiro_positivo": 2.556747
+        },
+        "2021": {
+          "limiar": 0.1423,
+          "acuracia": 0.623146,
+          "roc_auc": 0.72462,
+          "average_precision": 0.373182,
+          "balanced_accuracy": 0.66072,
+          "precision": 0.267963,
+          "recall": 0.717319,
+          "f1": 0.390172,
+          "f2": 0.537162,
+          "matriz_confusao": {
+            "tn": 7183,
+            "fp": 4707,
+            "fn": 679,
+            "tp": 1723
+          },
+          "quantidade": 14292,
+          "positivos": 2402,
+          "quantidade_alertas": 6430,
+          "taxa_alertas": 0.449902,
+          "falsos_positivos_por_verdadeiro_positivo": 2.731863
+        },
+        "2022": {
+          "limiar": 0.1423,
+          "acuracia": 0.604044,
+          "roc_auc": 0.729842,
+          "average_precision": 0.408652,
+          "balanced_accuracy": 0.660233,
+          "precision": 0.268895,
+          "recall": 0.746269,
+          "f1": 0.395341,
+          "f2": 0.550726,
+          "matriz_confusao": {
+            "tn": 6783,
+            "fp": 5030,
+            "fn": 629,
+            "tp": 1850
+          },
+          "quantidade": 14292,
+          "positivos": 2479,
+          "quantidade_alertas": 6880,
+          "taxa_alertas": 0.481388,
+          "falsos_positivos_por_verdadeiro_positivo": 2.718919
+        },
+        "2023": {
+          "limiar": 0.1423,
+          "acuracia": 0.63574,
+          "roc_auc": 0.731938,
+          "average_precision": 0.399404,
+          "balanced_accuracy": 0.660034,
+          "precision": 0.270107,
+          "recall": 0.696474,
+          "f1": 0.389254,
+          "f2": 0.529355,
+          "matriz_confusao": {
+            "tn": 7427,
+            "fp": 4483,
+            "fn": 723,
+            "tp": 1659
+          },
+          "quantidade": 14292,
+          "positivos": 2382,
+          "quantidade_alertas": 6142,
+          "taxa_alertas": 0.429751,
+          "falsos_positivos_por_verdadeiro_positivo": 2.70223
+        }
+      }
+    },
+    "taxa_e_ocorrencia_em_2_meses": {
+      "corte_taxa_6m_por_100k": 24.877921,
+      "regra_evidencia_minima": "taxa_e_ocorrencia_em_2_meses",
+      "prevalencia_referencia_antes_2020": 0.138287,
+      "limiar_modelo": 0.124717,
+      "metricas_agrupadas": {
+        "limiar": 0.1247,
+        "acuracia": 0.683739,
+        "roc_auc": 0.759253,
+        "average_precision": 0.386828,
+        "balanced_accuracy": 0.690583,
+        "precision": 0.266166,
+        "recall": 0.700136,
+        "f1": 0.385703,
+        "f2": 0.527971,
+        "matriz_confusao": {
+          "tn": 33412,
+          "fp": 15649,
+          "fn": 2431,
+          "tp": 5676
+        },
+        "quantidade": 57168,
+        "positivos": 8107,
+        "quantidade_alertas": 21325,
+        "taxa_alertas": 0.373023,
+        "falsos_positivos_por_verdadeiro_positivo": 2.757047
+      },
+      "metricas_por_ano": {
+        "2020": {
+          "limiar": 0.1247,
+          "acuracia": 0.699692,
+          "roc_auc": 0.752519,
+          "average_precision": 0.391483,
+          "balanced_accuracy": 0.692597,
+          "precision": 0.276697,
+          "recall": 0.682664,
+          "f1": 0.393785,
+          "f2": 0.52779,
+          "matriz_confusao": {
+            "tn": 8606,
+            "fp": 3644,
+            "fn": 648,
+            "tp": 1394
+          },
+          "quantidade": 14292,
+          "positivos": 2042,
+          "quantidade_alertas": 5038,
+          "taxa_alertas": 0.352505,
+          "falsos_positivos_por_verdadeiro_positivo": 2.61406
+        },
+        "2021": {
+          "limiar": 0.1247,
+          "acuracia": 0.686398,
+          "roc_auc": 0.759923,
+          "average_precision": 0.371615,
+          "balanced_accuracy": 0.692111,
+          "precision": 0.268882,
+          "recall": 0.700098,
+          "f1": 0.38854,
+          "f2": 0.530077,
+          "matriz_confusao": {
+            "tn": 8386,
+            "fp": 3872,
+            "fn": 610,
+            "tp": 1424
+          },
+          "quantidade": 14292,
+          "positivos": 2034,
+          "quantidade_alertas": 5296,
+          "taxa_alertas": 0.370557,
+          "falsos_positivos_por_verdadeiro_positivo": 2.719101
+        },
+        "2022": {
+          "limiar": 0.1247,
+          "acuracia": 0.669186,
+          "roc_auc": 0.768012,
+          "average_precision": 0.403979,
+          "balanced_accuracy": 0.696121,
+          "precision": 0.262592,
+          "recall": 0.73376,
+          "f1": 0.38677,
+          "f2": 0.539983,
+          "matriz_confusao": {
+            "tn": 8073,
+            "fp": 4187,
+            "fn": 541,
+            "tp": 1491
+          },
+          "quantidade": 14292,
+          "positivos": 2032,
+          "quantidade_alertas": 5678,
+          "taxa_alertas": 0.397285,
+          "falsos_positivos_por_verdadeiro_positivo": 2.808182
+        },
+        "2023": {
+          "limiar": 0.1247,
+          "acuracia": 0.679681,
+          "roc_auc": 0.760779,
+          "average_precision": 0.38316,
+          "balanced_accuracy": 0.681423,
+          "precision": 0.257293,
+          "recall": 0.683842,
+          "f1": 0.373906,
+          "f2": 0.513562,
+          "matriz_confusao": {
+            "tn": 8347,
+            "fp": 3946,
+            "fn": 632,
+            "tp": 1367
+          },
+          "quantidade": 14292,
+          "positivos": 1999,
+          "quantidade_alertas": 5313,
+          "taxa_alertas": 0.371746,
+          "falsos_positivos_por_verdadeiro_positivo": 2.886613
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "etapa": "Perfis anuais por municipio com historico anterior ao ano.",
+  "dados": "Somente validacoes temporais de 2020 a 2023.",
+  "teste_final_usado": false,
+  "resultados": {
+    "modelo_original": {
+      "limiar_otimizado_f2": {
+        "limiar": 0.1081,
+        "acuracia": 0.475021,
+        "roc_auc": 0.688364,
+        "average_precision": 0.331073,
+        "balanced_accuracy": 0.623087,
+        "precision": 0.252725,
+        "recall": 0.865709,
+        "f1": 0.391237,
+        "f2": 0.58293,
+        "matriz_confusao": {
+          "tn": 17512,
+          "fp": 28516,
+          "fn": 1496,
+          "tp": 9644
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 38160,
+        "taxa_alertas": 0.667506,
+        "falsos_positivos_por_verdadeiro_positivo": 2.956864
+      },
+      "limiar_com_recall_minimo_70": {
+        "limiar": 0.201,
+        "acuracia": 0.615344,
+        "roc_auc": 0.688364,
+        "average_precision": 0.331073,
+        "balanced_accuracy": 0.649741,
+        "precision": 0.295915,
+        "recall": 0.706104,
+        "f1": 0.417051,
+        "f2": 0.552838,
+        "matriz_confusao": {
+          "tn": 27312,
+          "fp": 18716,
+          "fn": 3274,
+          "tp": 7866
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 26582,
+        "taxa_alertas": 0.46498,
+        "falsos_positivos_por_verdadeiro_positivo": 2.379354
+      }
+    },
+    "modelo_com_perfis_anuais": {
+      "limiar_otimizado_f2": {
+        "limiar": 0.1053,
+        "acuracia": 0.481108,
+        "roc_auc": 0.709894,
+        "average_precision": 0.356734,
+        "balanced_accuracy": 0.631119,
+        "precision": 0.25666,
+        "recall": 0.87693,
+        "f1": 0.397098,
+        "f2": 0.591186,
+        "matriz_confusao": {
+          "tn": 17735,
+          "fp": 28293,
+          "fn": 1371,
+          "tp": 9769
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 38062,
+        "taxa_alertas": 0.665792,
+        "falsos_positivos_por_verdadeiro_positivo": 2.896202
+      },
+      "limiar_com_recall_minimo_70": {
+        "limiar": 0.18,
+        "acuracia": 0.624458,
+        "roc_auc": 0.709894,
+        "average_precision": 0.356734,
+        "balanced_accuracy": 0.653325,
+        "precision": 0.300898,
+        "recall": 0.700628,
+        "f1": 0.420993,
+        "f2": 0.553554,
+        "matriz_confusao": {
+          "tn": 27894,
+          "fp": 18134,
+          "fn": 3335,
+          "tp": 7805
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 25939,
+        "taxa_alertas": 0.453733,
+        "falsos_positivos_por_verdadeiro_positivo": 2.323382
+      },
+      "limiares_por_perfil_f2": {
+        "limiar": "especifico_por_perfil",
+        "acuracia": 0.481983,
+        "roc_auc": 0.709894,
+        "average_precision": 0.356734,
+        "balanced_accuracy": 0.633023,
+        "precision": 0.257508,
+        "recall": 0.880521,
+        "f1": 0.398481,
+        "f2": 0.593392,
+        "matriz_confusao": {
+          "tn": 17745,
+          "fp": 28283,
+          "fn": 1331,
+          "tp": 9809
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 38092,
+        "taxa_alertas": 0.666317,
+        "falsos_positivos_por_verdadeiro_positivo": 2.883372,
+        "limiares_por_perfil": {
+          "perfil_1": 0.098923,
+          "perfil_2": 0.106627,
+          "perfil_3": 0.154023,
+          "perfil_4": 0.101729,
+          "perfil_5": 0.079964
+        },
+        "metricas_por_perfil": {
+          "perfil_1": {
+            "limiar": 0.0989,
+            "acuracia": 0.380249,
+            "roc_auc": 0.589127,
+            "average_precision": 0.213716,
+            "balanced_accuracy": 0.591336,
+            "precision": 0.215803,
+            "recall": 0.92196,
+            "f1": 0.349742,
+            "f2": 0.557262,
+            "matriz_confusao": {
+              "tn": 1953,
+              "fp": 5538,
+              "fn": 129,
+              "tp": 1524
+            },
+            "quantidade": 9144,
+            "positivos": 1653,
+            "quantidade_alertas": 7062,
+            "taxa_alertas": 0.77231,
+            "falsos_positivos_por_verdadeiro_positivo": 3.633858
+          },
+          "perfil_2": {
+            "limiar": 0.1066,
+            "acuracia": 0.494321,
+            "roc_auc": 0.711082,
+            "average_precision": 0.331452,
+            "balanced_accuracy": 0.635888,
+            "precision": 0.247674,
+            "recall": 0.859722,
+            "f1": 0.384562,
+            "f2": 0.575359,
+            "matriz_confusao": {
+              "tn": 10542,
+              "fp": 15042,
+              "fn": 808,
+              "tp": 4952
+            },
+            "quantidade": 31344,
+            "positivos": 5760,
+            "quantidade_alertas": 19994,
+            "taxa_alertas": 0.637889,
+            "falsos_positivos_por_verdadeiro_positivo": 3.037561
+          },
+          "perfil_3": {
+            "limiar": 0.154,
+            "acuracia": 0.788804,
+            "roc_auc": 0.818426,
+            "average_precision": 0.331529,
+            "balanced_accuracy": 0.760937,
+            "precision": 0.282878,
+            "recall": 0.726115,
+            "f1": 0.407143,
+            "f2": 0.552861,
+            "matriz_confusao": {
+              "tn": 1126,
+              "fp": 289,
+              "fn": 43,
+              "tp": 114
+            },
+            "quantidade": 1572,
+            "positivos": 157,
+            "quantidade_alertas": 403,
+            "taxa_alertas": 0.256361,
+            "falsos_positivos_por_verdadeiro_positivo": 2.535088
+          },
+          "perfil_4": {
+            "limiar": 0.1017,
+            "acuracia": 0.493953,
+            "roc_auc": 0.736627,
+            "average_precision": 0.433512,
+            "balanced_accuracy": 0.634933,
+            "precision": 0.302181,
+            "recall": 0.898468,
+            "f1": 0.452255,
+            "f2": 0.644222,
+            "matriz_confusao": {
+              "tn": 3441,
+              "fp": 5824,
+              "fn": 285,
+              "tp": 2522
+            },
+            "quantidade": 12072,
+            "positivos": 2807,
+            "quantidade_alertas": 8346,
+            "taxa_alertas": 0.691352,
+            "falsos_positivos_por_verdadeiro_positivo": 2.309278
+          },
+          "perfil_5": {
+            "limiar": 0.08,
+            "acuracia": 0.454545,
+            "roc_auc": 0.677828,
+            "average_precision": 0.387968,
+            "balanced_accuracy": 0.606992,
+            "precision": 0.304766,
+            "recall": 0.913499,
+            "f1": 0.457049,
+            "f2": 0.652744,
+            "matriz_confusao": {
+              "tn": 683,
+              "fp": 1590,
+              "fn": 66,
+              "tp": 697
+            },
+            "quantidade": 3036,
+            "positivos": 763,
+            "quantidade_alertas": 2287,
+            "taxa_alertas": 0.753294,
+            "falsos_positivos_por_verdadeiro_positivo": 2.281205
+          }
+        }
+      },
+      "limiares_por_perfil_recall_minimo_70": {
+        "limiar": "especifico_por_perfil",
+        "acuracia": 0.615274,
+        "roc_auc": 0.709894,
+        "average_precision": 0.356734,
+        "balanced_accuracy": 0.656298,
+        "precision": 0.298806,
+        "recall": 0.723519,
+        "f1": 0.422942,
+        "f2": 0.563368,
+        "matriz_confusao": {
+          "tn": 27114,
+          "fp": 18914,
+          "fn": 3080,
+          "tp": 8060
+        },
+        "quantidade": 57168,
+        "positivos": 11140,
+        "quantidade_alertas": 26974,
+        "taxa_alertas": 0.471837,
+        "falsos_positivos_por_verdadeiro_positivo": 2.34665,
+        "limiares_por_perfil": {
+          "perfil_1": 0.135393,
+          "perfil_2": 0.179302,
+          "perfil_3": 0.158637,
+          "perfil_4": 0.21869,
+          "perfil_5": 0.163987
+        },
+        "metricas_por_perfil": {
+          "perfil_1": {
+            "limiar": 0.1354,
+            "acuracia": 0.429681,
+            "roc_auc": 0.589127,
+            "average_precision": 0.213716,
+            "balanced_accuracy": 0.591096,
+            "precision": 0.219616,
+            "recall": 0.84392,
+            "f1": 0.348532,
+            "f2": 0.538028,
+            "matriz_confusao": {
+              "tn": 2534,
+              "fp": 4957,
+              "fn": 258,
+              "tp": 1395
+            },
+            "quantidade": 9144,
+            "positivos": 1653,
+            "quantidade_alertas": 6352,
+            "taxa_alertas": 0.694663,
+            "falsos_positivos_por_verdadeiro_positivo": 3.553405
+          },
+          "perfil_2": {
+            "limiar": 0.1793,
+            "acuracia": 0.643121,
+            "roc_auc": 0.711082,
+            "average_precision": 0.331452,
+            "balanced_accuracy": 0.665158,
+            "precision": 0.298888,
+            "recall": 0.7,
+            "f1": 0.418909,
+            "f2": 0.551875,
+            "matriz_confusao": {
+              "tn": 16126,
+              "fp": 9458,
+              "fn": 1728,
+              "tp": 4032
+            },
+            "quantidade": 31344,
+            "positivos": 5760,
+            "quantidade_alertas": 13490,
+            "taxa_alertas": 0.430385,
+            "falsos_positivos_por_verdadeiro_positivo": 2.345734
+          },
+          "perfil_3": {
+            "limiar": 0.1586,
+            "acuracia": 0.794529,
+            "roc_auc": 0.818426,
+            "average_precision": 0.331529,
+            "balanced_accuracy": 0.755623,
+            "precision": 0.286082,
+            "recall": 0.707006,
+            "f1": 0.407339,
+            "f2": 0.54626,
+            "matriz_confusao": {
+              "tn": 1138,
+              "fp": 277,
+              "fn": 46,
+              "tp": 111
+            },
+            "quantidade": 1572,
+            "positivos": 157,
+            "quantidade_alertas": 388,
+            "taxa_alertas": 0.246819,
+            "falsos_positivos_por_verdadeiro_positivo": 2.495495
+          },
+          "perfil_4": {
+            "limiar": 0.2187,
+            "acuracia": 0.667412,
+            "roc_auc": 0.736627,
+            "average_precision": 0.433512,
+            "balanced_accuracy": 0.679775,
+            "precision": 0.382809,
+            "recall": 0.702886,
+            "f1": 0.495666,
+            "f2": 0.602185,
+            "matriz_confusao": {
+              "tn": 6084,
+              "fp": 3181,
+              "fn": 834,
+              "tp": 1973
+            },
+            "quantidade": 12072,
+            "positivos": 2807,
+            "quantidade_alertas": 5154,
+            "taxa_alertas": 0.426938,
+            "falsos_positivos_por_verdadeiro_positivo": 1.612266
+          },
+          "perfil_5": {
+            "limiar": 0.164,
+            "acuracia": 0.586627,
+            "roc_auc": 0.677828,
+            "average_precision": 0.387968,
+            "balanced_accuracy": 0.630772,
+            "precision": 0.345283,
+            "recall": 0.719528,
+            "f1": 0.466638,
+            "f2": 0.59134,
+            "matriz_confusao": {
+              "tn": 1232,
+              "fp": 1041,
+              "fn": 214,
+              "tp": 549
+            },
+            "quantidade": 3036,
+            "positivos": 763,
+            "quantidade_alertas": 1590,
+            "taxa_alertas": 0.523715,
+            "falsos_positivos_por_verdadeiro_positivo": 1.896175
+          }
+        }
+      }
+    }
+  },
+  "caracteristicas_perfis_por_validacao": {
+    "2020": [
+      {
+        "perfil": "perfil_1",
+        "snapshots_municipais": 1647,
+        "mediana_volume_mensal": 0.0,
+        "mediana_proporcao_zeros": 1.0,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_2",
+        "snapshots_municipais": 3234,
+        "mediana_volume_mensal": 0.125,
+        "mediana_proporcao_zeros": 0.9167,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_3",
+        "snapshots_municipais": 87,
+        "mediana_volume_mensal": 0.5833,
+        "mediana_proporcao_zeros": 0.6667,
+        "mediana_tendencia": 5.6667
+      },
+      {
+        "perfil": "perfil_4",
+        "snapshots_municipais": 753,
+        "mediana_volume_mensal": 0.8333,
+        "mediana_proporcao_zeros": 0.5,
+        "mediana_tendencia": 0.9412
+      },
+      {
+        "perfil": "perfil_5",
+        "snapshots_municipais": 234,
+        "mediana_volume_mensal": 5.2292,
+        "mediana_proporcao_zeros": 0.0,
+        "mediana_tendencia": 0.9412
+      }
+    ],
+    "2021": [
+      {
+        "perfil": "perfil_1",
+        "snapshots_municipais": 1867,
+        "mediana_volume_mensal": 0.0,
+        "mediana_proporcao_zeros": 1.0,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_2",
+        "snapshots_municipais": 3881,
+        "mediana_volume_mensal": 0.125,
+        "mediana_proporcao_zeros": 0.9167,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_3",
+        "snapshots_municipais": 106,
+        "mediana_volume_mensal": 0.5417,
+        "mediana_proporcao_zeros": 0.7083,
+        "mediana_tendencia": 4.8333
+      },
+      {
+        "perfil": "perfil_4",
+        "snapshots_municipais": 994,
+        "mediana_volume_mensal": 0.8333,
+        "mediana_proporcao_zeros": 0.5,
+        "mediana_tendencia": 0.9714
+      },
+      {
+        "perfil": "perfil_5",
+        "snapshots_municipais": 298,
+        "mediana_volume_mensal": 5.1875,
+        "mediana_proporcao_zeros": 0.0,
+        "mediana_tendencia": 0.9355
+      }
+    ],
+    "2022": [
+      {
+        "perfil": "perfil_1",
+        "snapshots_municipais": 2044,
+        "mediana_volume_mensal": 0.0,
+        "mediana_proporcao_zeros": 1.0,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_2",
+        "snapshots_municipais": 4549,
+        "mediana_volume_mensal": 0.125,
+        "mediana_proporcao_zeros": 0.9167,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_3",
+        "snapshots_municipais": 149,
+        "mediana_volume_mensal": 0.5417,
+        "mediana_proporcao_zeros": 0.7083,
+        "mediana_tendencia": 4.0
+      },
+      {
+        "perfil": "perfil_4",
+        "snapshots_municipais": 1226,
+        "mediana_volume_mensal": 0.8333,
+        "mediana_proporcao_zeros": 0.5,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_5",
+        "snapshots_municipais": 369,
+        "mediana_volume_mensal": 5.0833,
+        "mediana_proporcao_zeros": 0.0,
+        "mediana_tendencia": 0.9387
+      }
+    ],
+    "2023": [
+      {
+        "perfil": "perfil_1",
+        "snapshots_municipais": 2211,
+        "mediana_volume_mensal": 0.0,
+        "mediana_proporcao_zeros": 1.0,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_2",
+        "snapshots_municipais": 4828,
+        "mediana_volume_mensal": 0.0833,
+        "mediana_proporcao_zeros": 0.9167,
+        "mediana_tendencia": 1.0
+      },
+      {
+        "perfil": "perfil_3",
+        "snapshots_municipais": 726,
+        "mediana_volume_mensal": 0.2917,
+        "mediana_proporcao_zeros": 0.7917,
+        "mediana_tendencia": 2.0
+      },
+      {
+        "perfil": "perfil_4",
+        "snapshots_municipais": 1335,
+        "mediana_volume_mensal": 0.9167,
+        "mediana_proporcao_zeros": 0.4583,
+        "mediana_tendencia": 0.9167
+      },
+      {
+        "perfil": "perfil_5",
+        "snapshots_municipais": 428,
+        "mediana_volume_mensal": 5.125,
+        "mediana_proporcao_zeros": 0.0,
+        "mediana_tendencia": 0.9412
+      }
+    ]
+  }
+}

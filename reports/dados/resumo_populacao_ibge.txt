@@ -1,0 +1,7 @@
+Populacao municipal - IBGE SIDRA, tabela 6579
+
+Variavel 9324: populacao residente estimada.
+Anos: 2013 a 2021.
+Registros da Regiao Sul: 10719.
+Municipios distintos: 1191.
+Fonte: https://apisidra.ibge.gov.br/values/t/6579/

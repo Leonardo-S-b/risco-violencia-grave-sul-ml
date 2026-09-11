@@ -1,0 +1,19 @@
+Comparacao com historico de 24 e 36 meses
+
+Classificacao binaria e target inalterado.
+Teste final nao utilizado.
+Criterio: menor FP com recall agrupado minimo de 70%.
+
+populacional_v2: limiar=0.18251, AP=0.384574, precisao=0.313681, recall=0.70018, F2=0.561749, FP=17066, FN=3340
+  - 2020: precisao=0.349336, recall=0.623012, FP=3429, FN=1114
+  - 2021: precisao=0.308849, recall=0.769651, FP=4733, FN=633
+  - 2022: precisao=0.303304, recall=0.740058, FP=4702, FN=719
+  - 2023: precisao=0.29955, recall=0.672782, FP=4202, FN=874
+
+populacional_com_historico_longo: limiar=0.174536, AP=0.386943, precisao=0.314461, recall=0.7, F2=0.562156, FP=17000, FN=3342
+  - 2020: precisao=0.359189, recall=0.623689, FP=3288, FN=1112
+  - 2021: precisao=0.311256, recall=0.762737, FP=4638, FN=652
+  - 2022: precisao=0.298719, recall=0.733189, FP=4761, FN=738
+  - 2023: precisao=0.298014, recall=0.685511, FP=4313, FN=840
+
+Reducao de falsos positivos contra a v2: 66.

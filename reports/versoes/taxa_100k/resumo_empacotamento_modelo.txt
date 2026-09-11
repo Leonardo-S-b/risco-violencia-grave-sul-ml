@@ -1,0 +1,9 @@
+Empacotamento do modelo proporcional
+
+Artefato: models\versoes\taxa_100k\modelo_risco_taxa_100k.joblib
+Metadata: models\versoes\taxa_100k\metadata_modelo_risco_taxa_100k.json
+Tamanho: 25.75 MB
+Algoritmo: Random Forest (rf_folhas_10)
+Limiar: 0.1313
+Linhas usadas no reajuste: 136965
+O reajuste usa todos os targets conhecidos e nao representa uma nova avaliacao.

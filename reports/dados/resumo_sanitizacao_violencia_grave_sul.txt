@@ -1,0 +1,17 @@
+Resumo da sanitizacao - violencia grave no Sul
+Periodo considerado: 2015 a 2025
+Arquivo base longa: data\processed\violencia_grave_sul_municipal_longa.csv
+Arquivo base mensal: data\processed\violencia_grave_sul_municipal_mensal.csv
+
+Linhas na base longa: 786060
+Linhas na base mensal agregada: 157212
+
+Linhas por ano: {2015: 71460, 2016: 71460, 2017: 71460, 2018: 71460, 2019: 71460, 2020: 71460, 2021: 71460, 2022: 71460, 2023: 71460, 2024: 71460, 2025: 71460}
+Linhas por UF: {'PR': 263340, 'RS': 328020, 'SC': 194700}
+Linhas por evento: {'feminicidio': 157212, 'homicidio_doloso': 157212, 'latrocinio': 157212, 'lesao_corporal_seguida_morte': 157212, 'tentativa_homicidio': 157212}
+
+Municipios em PR: 399
+Municipios em RS: 497
+Municipios em SC: 295
+
+Observacao: esta base usa contagem bruta de vitimas. Sem dados populacionais, o risco representa volume absoluto historico, nao taxa proporcional por habitante.
