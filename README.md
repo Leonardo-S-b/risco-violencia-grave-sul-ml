@@ -1,173 +1,335 @@
-# Consulta preliminar de violencia grave no Sul
+# Terravista — consulta preliminar de violência grave
 
-Aplicacao academica end-to-end de Machine Learning supervisionado para apoiar a
-consulta preliminar de municipios do Parana, Santa Catarina e Rio Grande do Sul
-por empresas de construcao e planejamento urbano. O sistema produz um alerta
-complementar; ele nao aprova, reprova nem substitui uma decisao de investimento.
+Aplicação end-to-end de Machine Learning supervisionado para classificação de
+alerta municipal. A solução foi criada para apoiar consultas preliminares de
+empresas de construção, empreiteiras e equipes de planejamento de cidades e
+bairros planejados.
 
-## Proposta do trabalho
+O usuário escolhe um município da Região Sul e um mês de referência. O sistema
+recupera o histórico conhecido naquela data, executa o modelo e informa se há
+indicação de alerta para os seis meses seguintes. O resultado ajuda a priorizar
+uma análise complementar, mas não decide se um investimento deve ser realizado.
 
-### Qual dataset foi escolhido e qual problema ele representa?
+## Respostas exigidas pela atividade
 
-Foram escolhidas as bases anuais de Vitimas de Dados Estatisticos (VDE), de 2015
-a 2025, combinadas com estimativas municipais de populacao do IBGE/SIDRA. Depois
-da limpeza, a base possui 157.212 registros mensais dos 1.191 municipios da
-Regiao Sul.
+### 1. Qual dataset foi escolhido e qual problema ele representa?
 
-O problema e identificar municipios que podem apresentar uma taxa persistente
-de violencia grave elevada nos seis meses seguintes. Sao considerados homicidio
-doloso, latrocinio, tentativa de homicidio, lesao corporal seguida de morte e
-feminicidio.
+Foram utilizadas as bases anuais de Vítimas de Dados Estatísticos (VDE), entre
+2015 e 2025, combinadas com estimativas municipais de população do IBGE/SIDRA.
 
-### Qual e a variavel-alvo?
+Depois da preparação, a base mensal possui 157.212 registros referentes aos
+1.191 municípios do Paraná, Santa Catarina e Rio Grande do Sul. São consideradas
+cinco categorias de violência grave:
 
-O target e `alerta_taxa_violencia_grave_proximos_6m`. Ele recebe valor `1` quando:
+- homicídio doloso;
+- tentativa de homicídio;
+- latrocínio;
+- feminicídio;
+- lesão corporal seguida de morte.
 
-1. a soma de ocorrencias dos seis meses seguintes supera 25 por 100 mil
-   habitantes; e
-2. existem ocorrencias em pelo menos dois meses diferentes desse periodo.
+O problema consiste em classificar se um município apresenta indicação de uma
+taxa persistente de violência grave elevada nos seis meses posteriores à
+consulta. A aplicação não representa toda a criminalidade municipal, pois
+considera somente as categorias listadas.
 
-A segunda condicao impede que um unico caso isolado em uma cidade pequena seja
-interpretado como um problema persistente.
+### 2. Qual é a variável-alvo (target) que será prevista?
 
-### Quais sao as classes possiveis?
+A variável-alvo é:
 
-- `0 - sem alerta`: a regra proporcional e de persistencia nao foi atingida;
-- `1 - com alerta`: a regra foi atingida e o municipio merece analise adicional.
+```text
+alerta_taxa_violencia_grave_proximos_6m
+```
 
-### Quais informacoes entram no modelo?
+Para cada município e mês histórico, o target recebe valor `1` quando as duas
+condições abaixo são satisfeitas nos seis meses seguintes:
 
-O modelo usa somente informacoes conhecidas na data da consulta:
+1. a taxa acumulada supera 25 registros por 100 mil habitantes; e
+2. existem registros em pelo menos dois meses diferentes.
 
-- UF e mes do ano;
-- populacao municipal oficial disponivel naquele momento;
-- totais recentes de violencia grave;
-- valores atrasados em 1, 2, 3, 6 e 12 meses;
-- medias e desvios moveis;
-- taxas por 100 mil habitantes;
-- taxas suavizadas para reduzir distorcoes em municipios pequenos;
-- historico separado por tipo de ocorrencia.
+A taxa é calculada por:
 
-Os seis meses futuros sao usados exclusivamente para criar o target durante o
-treinamento e nunca entram como caracteristicas.
+```text
+(total dos seis meses seguintes / população utilizada) × 100.000
+```
 
-### Quem utilizaria e com qual finalidade?
+O corte original, 24,877921 por 100 mil, corresponde ao percentil 80 dos dados
+anteriores a 2020. Ele foi arredondado para 25 para tornar a regra compreensível.
+A exigência de dois meses reduz alertas causados por um único episódio isolado
+em municípios pequenos.
 
-Equipes de expansao, planejamento e estudos preliminares de uma construtora ou
-empreiteira de cidades e bairros planejados. O alerta ajuda a priorizar locais
-que precisam de uma investigacao de seguranca mais detalhada antes das etapas de
-viabilidade, aquisicao de terrenos e planejamento urbano.
+Os meses futuros são usados apenas para criar o gabarito durante o treinamento.
+Eles nunca entram nas características fornecidas ao modelo.
 
-### O que a aplicacao fara com a classificacao?
+Das 136.965 observações elegíveis, 18.536 receberam target positivo, o que
+corresponde a 13,53% da base de modelagem.
 
-A aplicacao apresentara a classe prevista, a probabilidade estimada e uma
-orientacao operacional:
+### 3. Quais são as classes possíveis?
 
-- sem alerta: continuar a consulta preliminar com os demais indicadores;
-- com alerta: solicitar analise complementar de seguranca e contexto local.
+- `0 — Sem alerta`: a regra proporcional e de persistência não foi atingida.
+- `1 — Com alerta`: a regra foi atingida e o município merece análise adicional.
 
-O resultado nao sera apresentado como recomendacao automatica de investir ou
-nao investir.
+O target não é uma nota de segurança, um ranking municipal ou uma recomendação
+automática de investimento. Ele é uma classificação binária para triagem.
 
-### Como sera a experiencia de uso?
+### 4. Quais informações são utilizadas como entrada do modelo?
 
-O usuario selecionara UF, municipio e data de consulta em uma interface web. A
-aplicacao buscara o historico necessario, enviara as variaveis para uma API
-FastAPI e exibira o alerta, a probabilidade e uma explicacao curta sobre o uso
-preliminar do resultado.
+O modelo utiliza somente dados disponíveis até o mês selecionado:
 
-## Modelo selecionado
+- UF e mês do ano;
+- população municipal disponível naquele momento;
+- total atual de violência grave;
+- valores anteriores de 1, 2, 3, 6 e 12 meses;
+- médias e desvios móveis;
+- taxas municipais de 3, 6 e 12 meses por 100 mil habitantes;
+- taxa estadual dos últimos 12 meses;
+- taxas suavizadas para reduzir distorções em municípios pequenos;
+- histórico de cada uma das cinco categorias;
+- distância e proporção em relação ao máximo móvel observado até a consulta.
 
-A versao proporcional usa uma `RandomForestClassifier` com 300 arvores,
-profundidade maxima 14, minimo de 10 exemplos por folha e limiar 0,1313. Nas
-validacoes temporais de 2020 a 2023, obteve:
+Ao todo, o pipeline recebe 44 características. O usuário não precisa preenchê-las:
+a API constrói todas automaticamente a partir de UF, município e data.
 
-- acuracia: 68,39%;
-- ROC AUC: 0,7608;
-- average precision: 0,3941;
-- precisao: 26,53%;
-- recall: 70,01%;
-- F2: 0,5273.
+### 5. Quem utilizaria a aplicação e com qual finalidade?
 
-O teste posterior ja havia sido aberto por uma versao anterior e nao foi
-reutilizado para escolher este modelo. Essa limitacao esta documentada para nao
-apresentar o resultado como uma avaliacao externa inedita.
+A aplicação foi pensada para equipes de expansão, planejamento e estudos de
+viabilidade de uma construtora ou empreiteira de cidades e bairros planejados.
+
+Ela ajuda a identificar municípios que precisam de investigação adicional de
+segurança antes de etapas como análise de viabilidade, aquisição de terrenos e
+planejamento urbano.
+
+### 6. O que a aplicação faz com a classificação produzida?
+
+A aplicação converte a probabilidade do modelo em uma orientação preliminar:
+
+- **Sem alerta:** continuar a consulta com os demais indicadores do município.
+- **Com alerta:** solicitar análise complementar de segurança e contexto local.
+
+Além da classe, são apresentados:
+
+- probabilidade estimada e limiar de classificação;
+- população utilizada;
+- registros no mês consultado;
+- taxas municipais dos últimos 6 e 12 meses;
+- comparação com a taxa estadual;
+- tendência entre os dois períodos de 6 meses mais recentes;
+- gráfico mensal dos últimos 12 meses;
+- composição e categoria predominante no período.
+
+Esses dados dão contexto à classificação, mas não explicam causalidade nem
+substituem uma avaliação profissional.
+
+### 7. Como é a interface e a experiência de uso?
+
+A interface web apresenta um formulário com três seleções encadeadas:
+
+1. estado;
+2. município;
+3. mês de referência.
+
+Após a consulta, o usuário recebe um cartão de resultado com a classificação,
+a probabilidade e os indicadores históricos. A página possui estados de
+carregamento, erro com nova tentativa, layout responsivo, navegação por teclado,
+tema claro/escuro e documentação interativa da API.
+
+Consultas repetidas ao mesmo município e período são recuperadas do cache local.
+O cabeçalho `X-Cache` informa `MISS` no primeiro processamento e `HIT` quando a
+resposta é reaproveitada.
 
 ## Fluxo end-to-end
 
 ```text
 VDE + IBGE
-    -> sanitizacao
-    -> target e variaveis historicas
-    -> validacao temporal
-    -> treinamento e otimizacao
-    -> artefato treinado
-    -> API FastAPI
-    -> interface de consulta
+    ↓
+Sanitização e consolidação mensal
+    ↓
+Criação do target e das variáveis históricas
+    ↓
+Comparação e validação temporal dos algoritmos
+    ↓
+Otimização e empacotamento do modelo
+    ↓
+API FastAPI
+    ↓
+Interface web de consulta
 ```
 
-O projeto segue como referencia conceitual o repositorio
-[`ml_fastapi_for_churn`](https://github.com/chiarorosa/ml_fastapi_for_churn).
-A modelagem e o empacotamento estao concluidos; a API e a interface constituem
-a proxima etapa de implementacao.
-
-O artefato atual fica em
-`models/versoes/taxa_100k/modelo_risco_taxa_100k.joblib`. Ele inclui o pipeline
-de pre-processamento, a Random Forest, o limiar e os metadados necessarios para
-a futura API.
-
-## Organizacao do repositorio
+A arquitetura segue a lógica solicitada na atividade:
 
 ```text
-scripts/
-|-- dados/                         # coleta, limpeza e populacao do IBGE
-|-- versoes/
-|   |-- maximo_movel_6m/           # versao anterior preservada
-|   `-- taxa_100k/                 # versao proporcional atual
-`-- experimentos/                  # tentativas e diagnosticos nao promovidos
-
-data/processed/
-|-- referencias/                   # populacao do IBGE
-|-- versoes/                       # targets separados por versao
-|-- experimentos/                  # previsoes usadas em diagnosticos
-`-- *.csv                          # bases mensais compartilhadas
-
-reports/
-|-- dados/                         # auditoria da preparacao
-|-- versoes/                       # metricas de cada versao
-|-- experimentos/                  # resultados de tentativas
-`-- historico/                     # trabalhos anteriores arquivados
+Dataset → preparação → treinamento → avaliação → modelo → API → aplicação
 ```
 
-Consulte [`docs/contexto_do_projeto.md`](docs/contexto_do_projeto.md) para o
-historico das decisoes e
-[`docs/revisao_literatura_falsos_positivos.md`](docs/revisao_literatura_falsos_positivos.md)
-para a revisao utilizada na reducao de falsos alertas.
+O projeto utiliza como referência conceitual o repositório
+[`ml_fastapi_for_churn`](https://github.com/chiarorosa/ml_fastapi_for_churn),
+adaptando o fluxo para outro domínio de classificação.
 
-## Execucao da versao atual
+## Modelo selecionado e avaliação
 
-No PowerShell, a partir da raiz do repositorio:
+Foram comparados baseline, regressão logística, Random Forest, Extra Trees e
+Gradient Boosting. KNN e árvore de decisão também foram experimentados e
+preservados no histórico do projeto.
+
+O modelo promovido foi uma `RandomForestClassifier` configurada com:
+
+- 300 árvores;
+- profundidade máxima 14;
+- mínimo de 10 observações por folha;
+- limiar de alerta de 0,1313;
+- semente aleatória 42.
+
+Resultados agrupados das validações temporais de 2020 a 2023:
+
+| Métrica | Resultado |
+|---|---:|
+| Acurácia | 68,39% |
+| ROC AUC | 0,7608 |
+| Average Precision | 0,3941 |
+| Precisão | 26,53% |
+| Recall | 70,01% |
+| F1 | 0,3848 |
+| F2 | 0,5273 |
+
+O limiar de 13,13% não é o corte do target. Os valores possuem funções diferentes:
+
+- **25 por 100 mil:** define o gabarito real usado no treinamento;
+- **13,13%:** transforma a probabilidade do modelo em uma das duas classes.
+
+O limiar foi escolhido para manter recall próximo de 70%, pois deixar um alerta
+real passar despercebido foi considerado mais prejudicial que encaminhar um
+município para uma verificação adicional. Essa escolha aumenta a quantidade de
+falsos positivos e está documentada como limitação.
+
+O conjunto posterior já havia sido consultado durante uma versão anterior do
+projeto e não foi reutilizado como se fosse uma avaliação externa inédita.
+
+## Prevenção de vazamento de dados
+
+A separação entre treino e validação respeita o tempo. Para validar determinado
+ano, o treinamento utiliza apenas targets cujo horizonte de seis meses já havia
+terminado antes daquele ano.
+
+As variáveis históricas são calculadas somente com o mês da consulta e seus
+meses anteriores. A população utilizada é a estimativa mais recente disponível
+antes do ano consultado.
+
+## Arquitetura da aplicação
+
+```text
+api/
+├── main.py                         # inicialização e registro dos routers
+├── controllers/                    # rotas e respostas HTTP
+├── services/                       # regras de negócio e execução do modelo
+├── schemas.py                      # contratos de entrada e saída
+├── cache.py                        # cache LRU com expiração
+└── static.py                       # entrega dos arquivos da interface
+
+frontend/
+├── index.html                      # estrutura semântica da interface
+├── styles.css                      # design responsivo e temas
+└── app.js                          # integração com a API
+
+scripts/
+├── dados/                          # coleta e preparação
+├── versoes/
+│   ├── maximo_movel_6m/            # versão anterior preservada
+│   └── taxa_100k/                  # versão atual
+└── experimentos/                   # comparações não promovidas
+
+models/versoes/taxa_100k/           # modelo empacotado e metadados
+data/processed/                     # bases processadas
+reports/                            # métricas e auditorias
+tests/                              # testes automatizados
+```
+
+O artefato `modelo_risco_taxa_100k.joblib` contém o pré-processamento, a Random
+Forest treinada, o limiar escolhido e os metadados necessários para inferência.
+
+## Endpoints da API
+
+| Método | Endpoint | Finalidade |
+|---|---|---|
+| `GET` | `/api/v1/health` | Verificar API, modelo e cache |
+| `GET` | `/api/v1/metadata` | Consultar metadados do modelo |
+| `GET` | `/api/v1/municipios?uf=PR` | Listar municípios disponíveis |
+| `GET` | `/api/v1/periodos` | Listar períodos de um município |
+| `POST` | `/api/v1/predicoes` | Produzir classificação e contexto |
+
+Exemplo de entrada:
+
+```json
+{
+  "uf": "PR",
+  "municipio": "Curitiba",
+  "data_referencia": "2025-06-01"
+}
+```
+
+## Como executar localmente
+
+Requisitos: Python e `pip` disponíveis no terminal.
 
 ```powershell
 python -m pip install -r requirements.txt
+python -m uvicorn api.main:app --reload
+```
+
+Depois da inicialização:
+
+- interface: [http://127.0.0.1:8000](http://127.0.0.1:8000);
+- documentação Swagger: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs);
+- documentação ReDoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc).
+
+A primeira inicialização pode levar alguns segundos porque o modelo e o histórico
+municipal são carregados em memória.
+
+### Executar os testes
+
+```powershell
+python -m pytest -q
+```
+
+### Reproduzir a versão atual do modelo
+
+```powershell
 python -m scripts.dados.baixar_populacao_ibge
 python -m scripts.versoes.taxa_100k.criar_target_taxa_100k
 python -m scripts.versoes.taxa_100k.treinar_modelo_taxa_100k
 python -m scripts.versoes.taxa_100k.otimizar_modelo_taxa_100k
 python -m scripts.versoes.taxa_100k.empacotar_modelo
-python -m pytest -q
 ```
 
-Os experimentos antigos nao fazem parte da execucao principal. Eles permanecem
-no repositorio para demonstrar as alternativas avaliadas e justificar a escolha
-da versao atual.
+Os experimentos antigos não fazem parte da execução principal. Eles foram
+mantidos para documentar as alternativas avaliadas e justificar a versão atual.
 
-## Limitacoes
+## Cache
 
-- A precisao ainda e baixa: muitos alertas nao se confirmam.
-- Ocorrencias raras em municipios pequenos continuam dificeis de prever.
-- A base municipal nao permite conclusoes por bairro.
-- O indicador de seguranca deve ser combinado com mercado, infraestrutura,
-  mobilidade, legislacao e viabilidade financeira.
-- A aplicacao e uma consulta preliminar academica, nao um sistema autonomo de
-  decisao empresarial.
+A API mantém até 4.096 predições em um cache LRU local com validade de uma hora.
+O cache utiliza UF, município e período como chave. Ele é suficiente para a
+execução acadêmica em uma única instância e pode ser substituído por Redis em
+uma implantação distribuída.
+
+O cache das predições não altera o modelo nem as probabilidades: ele apenas
+reaproveita uma resposta que já foi calculada para a mesma consulta.
+
+## Limitações e uso responsável
+
+- A precisão de 26,53% significa que parte relevante dos alertas não se confirma.
+- O modelo identifica padrões históricos, mas não determina as causas da violência.
+- Ocorrências raras em municípios pequenos continuam difíceis de prever.
+- A base é municipal e não permite conclusões por bairro.
+- As cinco categorias não representam toda a criminalidade local.
+- Mudanças de registro, subnotificação e qualidade das fontes afetam o resultado.
+- Segurança deve ser analisada junto de mercado, infraestrutura, mobilidade,
+  legislação, viabilidade financeira e conhecimento local.
+- A aplicação é uma consulta preliminar acadêmica, não um sistema autônomo de
+  decisão empresarial ou de segurança pública.
+
+## Documentação complementar
+
+- [`docs/contexto_do_projeto.md`](docs/contexto_do_projeto.md): evolução das
+  decisões, experimentos e cuidados metodológicos.
+- [`docs/revisao_literatura_falsos_positivos.md`](docs/revisao_literatura_falsos_positivos.md):
+  referências utilizadas na investigação dos falsos positivos.
+- [`reports/versoes/taxa_100k/`](reports/versoes/taxa_100k/): relatórios da
+  versão promovida.

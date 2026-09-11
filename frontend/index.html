@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Consulta preliminar de alerta de violência grave para municípios da Região Sul."
+    />
+    <meta name="theme-color" content="#123c35" />
+    <title>Terravista | Consulta preliminar municipal</title>
+    <link rel="stylesheet" href="/styles.css?v=1.1.3" />
+    <script src="/app.js?v=1.1.3" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Terravista - pagina inicial">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false">
+            <path d="M6 24V13l10-6 10 6v11" />
+            <path d="M11 24v-7h10v7M4 24h24" />
+          </svg>
+        </span>
+        <span>
+          <strong>Terravista</strong>
+          <small>Inteligência territorial</small>
+        </span>
+      </a>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="titulo-pagina">
+        <div class="eyebrow"><span></span> Consulta de segurança municipal</div>
+        <h1 id="titulo-pagina">Um primeiro olhar para planejar com mais contexto.</h1>
+        <p>
+          Consulte uma estimativa de alerta de violência grave para os próximos
+          seis meses em municípios do Paraná, Santa Catarina e Rio Grande do Sul.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Area de consulta">
+        <article class="panel query-panel">
+          <div class="panel-heading">
+            <span class="step">01</span>
+            <div>
+              <h2>Defina a consulta</h2>
+              <p>Escolha o local e o mês de referência.</p>
+            </div>
+          </div>
+
+          <form id="consulta-form" novalidate>
+            <div class="field-row">
+              <div class="field field-uf">
+                <label for="uf">Estado</label>
+                <select id="uf" name="uf" required>
+                  <option value="PR">Paraná</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                </select>
+              </div>
+
+              <div class="field field-city">
+                <label for="municipio">Município</label>
+                <select id="municipio" name="municipio" required disabled>
+                  <option value="">Carregando municípios...</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="periodo">Mês de referência</label>
+              <select id="periodo" name="periodo" required disabled>
+                <option value="">Selecione primeiro o município</option>
+              </select>
+              <p class="field-hint">A previsão considera os seis meses seguintes.</p>
+            </div>
+
+            <p id="form-error" class="field-error" role="alert" hidden></p>
+
+            <button id="consultar" class="primary-button" type="submit" disabled>
+              <span class="button-label">Analisar município</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </form>
+
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+            <span>Nenhum dado pessoal é solicitado nesta consulta.</span>
+          </div>
+        </article>
+
+        <article class="panel result-panel" aria-labelledby="resultado-titulo">
+          <div class="panel-heading">
+            <span class="step">02</span>
+            <div>
+              <h2 id="resultado-titulo">Resultado preliminar</h2>
+              <p id="result-subtitle">O parecer aparecerá aqui após a consulta.</p>
+            </div>
+          </div>
+
+          <div id="result-content" class="result-content" aria-live="polite">
+            <div id="empty-state" class="empty-state">
+              <div class="empty-illustration" aria-hidden="true">
+                <svg viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="40" />
+                  <path d="M60 31v58M31 60h58" />
+                  <circle cx="60" cy="60" r="8" />
+                </svg>
+              </div>
+              <h3>Pronto para consultar</h3>
+              <p>Preencha os campos ao lado para gerar uma classificação.</p>
+            </div>
+
+            <div id="loading-state" class="loading-state" hidden aria-label="Analisando dados">
+              <div class="skeleton skeleton-badge"></div>
+              <div class="skeleton skeleton-title"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-meter"></div>
+              <div class="skeleton-grid" aria-hidden="true">
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+              </div>
+            </div>
+
+            <div id="error-state" class="error-state" hidden>
+              <span class="status-icon" aria-hidden="true">!</span>
+              <h3>Não foi possível concluir</h3>
+              <p id="error-message">Verifique a conexão e tente novamente.</p>
+              <button id="retry-button" class="secondary-button" type="button">
+                Tentar novamente
+              </button>
+            </div>
+
+            <div id="success-state" class="success-state" hidden>
+              <div class="result-topline">
+                <span id="status-badge" class="status-badge"></span>
+                <span id="cache-badge" class="cache-badge" hidden>Resposta em cache</span>
+              </div>
+              <h3 id="result-classification"></h3>
+              <p id="result-message" class="result-message"></p>
+
+              <div class="metric">
+                <div class="metric-heading">
+                  <span>Probabilidade de atingir a regra do alerta</span>
+                  <strong id="probability-value">0%</strong>
+                </div>
+                <div
+                  class="meter"
+                  role="progressbar"
+                  aria-label="Probabilidade estimada"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <span id="probability-bar"></span>
+                  <i id="threshold-mark" aria-hidden="true"></i>
+                </div>
+                <div class="meter-caption">
+                  <span>0%</span>
+                  <span id="threshold-label">Limiar do alerta</span>
+                  <span>100%</span>
+                </div>
+                <p class="rule-note">
+                  Regra: mais de 25 ocorrências por 100 mil habitantes nos
+                  próximos 6 meses, distribuídas em pelo menos 2 meses.
+                </p>
+              </div>
+
+              <dl class="result-details">
+                <div>
+                  <dt>Município</dt>
+                  <dd id="detail-city"></dd>
+                </div>
+                <div>
+                  <dt>Referência</dt>
+                  <dd id="detail-period"></dd>
+                </div>
+                <div>
+                  <dt>Horizonte</dt>
+                  <dd>Próximos 6 meses</dd>
+                </div>
+              </dl>
+
+              <section class="context-section" aria-labelledby="context-title">
+                <div class="section-title-row">
+                  <div>
+                    <span class="section-kicker">Dados de entrada</span>
+                    <h4 id="context-title">Contexto conhecido até a consulta</h4>
+                  </div>
+                  <span id="trend-badge" class="trend-badge"></span>
+                </div>
+
+                <dl class="context-grid">
+                  <div class="context-card">
+                    <dt>População utilizada</dt>
+                    <dd id="context-population"></dd>
+                  </div>
+                  <div class="context-card">
+                    <dt>Registros no mês</dt>
+                    <dd id="context-current-total"></dd>
+                  </div>
+                  <div class="context-card">
+                    <dt>Taxa nos últimos 6 meses</dt>
+                    <dd><span id="context-rate-6m"></span><small> / 100 mil</small></dd>
+                  </div>
+                  <div class="context-card">
+                    <dt>Taxa nos últimos 12 meses</dt>
+                    <dd><span id="context-rate-12m"></span><small> / 100 mil</small></dd>
+                  </div>
+                </dl>
+
+                <div class="state-comparison">
+                  <div>
+                    <span>Comparação estadual em 12 meses</span>
+                    <strong id="state-comparison-value"></strong>
+                  </div>
+                  <p id="state-comparison-detail"></p>
+                </div>
+
+                <div class="data-section">
+                  <div class="data-heading">
+                    <div>
+                      <h4>Histórico recente</h4>
+                      <p>Registros mensais nas categorias analisadas</p>
+                    </div>
+                    <strong id="history-total"></strong>
+                  </div>
+                  <div id="history-chart" class="history-chart" aria-label="Histórico dos últimos 12 meses"></div>
+                  <div class="chart-axis" aria-hidden="true">
+                    <span id="history-start"></span>
+                    <span id="history-end"></span>
+                  </div>
+                </div>
+
+                <div class="data-section composition-section">
+                  <div class="data-heading">
+                    <div>
+                      <h4>Composição em 12 meses</h4>
+                      <p>Distribuição por categoria de violência grave</p>
+                    </div>
+                  </div>
+                  <ul id="composition-list" class="composition-list"></ul>
+                  <p class="principal-category">
+                    Categoria predominante: <strong id="principal-category"></strong>
+                  </p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="disclaimer" aria-label="Aviso importante">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5M12 8h.01" />
+        </svg>
+        <div>
+          <strong>Uma consulta preliminar, não uma decisão de investimento.</strong>
+          <p>
+            O resultado deve ser combinado com contexto local, infraestrutura,
+            mercado, mobilidade e uma análise profissional de segurança.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Terravista &middot; Machine Learning aplicado ao planejamento urbano</span>
+      <a href="/docs" target="_blank" rel="noreferrer noopener">Documentação da API</a>
+    </footer>
+  </body>
+</html>
